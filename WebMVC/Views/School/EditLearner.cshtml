@@ -1,0 +1,132 @@
+﻿@model WebMVC.Models.proc_Get_Learner_Result
+@{
+    ViewBag.Title = "View Learner Biodata";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Learner Bio-Data</h2>
+
+<div class="row" style="margin-top:50px;">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="entypo-plus-circled"></i>
+                    Learner Bio-Data
+                    <span class="pull-right">
+                    </span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12" align="left">
+                        @Html.ActionLink("Back", "MyLearners", "School")
+                    </div>
+                    <div class="container-fluid">
+
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home">Basic Details<span class="badge">Step 1</span></a></li>
+                            <li><a data-toggle="tab" href="#SpecialNeeds">Special Needs<span class="badge">Step 3</span></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade in active">
+                                <h3>Basic Details</h3>
+                                <div class="col-md-12" style="color:red">CAPTURE ONLY LEARNERS WITH BIRTH CERTIFICATES!!</div>
+                                <div class="col-md-12">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="mymessage text-success"></div>
+                                            @if (ViewBag.Message != "")
+                                            {
+                                                <p>
+                                                    <div class="text-success">@ViewBag.Message</div>
+                                                </p>}
+                                            @if (ViewBag.Message2 != "")
+                                            {
+                                                <p>
+                                                    <div class="text-success">@ViewBag.Message2</div>
+                                                </p>
+                                            }
+
+                                            @Html.HiddenFor(x => x.UPI)
+                                            @Html.HiddenFor(x => x.Class_Code)
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.category_id, htmlAttributes: new { @class = "control-label col-md-6" })
+                                                            <div class="col-md-6">
+                                                                @Html.DropDownListFor(model => model.category_id, Model.CategoryList, "--Select--", new { @id = "ddlCategory", @class = "form-control" })
+                                                                @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.ServiceID, htmlAttributes: new { @class = "control-label col-md-6" })
+                                                            <div class="col-md-6">
+                                                                @Html.DropDownListFor(model => model.ServiceID, Model.ServiceList, "--Select--", new { @id = "ddlService", @class = "form-control" })
+                                                                @Html.ValidationMessageFor(model => model.ServiceID, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Profession, htmlAttributes: new { @class = "control-label text-left col-md-6" })
+                                                        <div class="col-md-6">
+                                                            @Html.TextBoxFor(model => model.Profession, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Profession, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Qualification, htmlAttributes: new { @class = "control-label text-left col-md-6" })
+                                                        <div class="col-md-6">
+                                                            @Html.TextBoxFor(model => model.Qualification, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.ServiceDescription, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                        <div class="col-md-8">
+                                                            @Html.TextAreaFor(model => model.ServiceDescription, 5, 45, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.ServiceDescription, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 text-center">
+                                                            <input type="submit" value="SAVE" class="btn btn-default" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div>
+                            </div>
+                            <div id="SpecialNeeds" class="tab-pane fade">
+                                <h3>Student Special Needs</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

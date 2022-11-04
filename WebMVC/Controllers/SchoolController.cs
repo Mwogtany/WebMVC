@@ -13,7 +13,6 @@ namespace WebMVC.Controllers
         // GET: School
         public ActionResult Index()
         {
-            Session["headurl"] = "";
             return View();
         }
 
@@ -90,6 +89,13 @@ namespace WebMVC.Controllers
             mylearner.CategoryList = aCategory;
             mylearner.GradeList = aGradeList;
             mylearner.PageRecordsList = aRecsList;
+            return View(mylearner);
+        }
+        public ActionResult EditLearner(string UPI)
+        {
+            NEMISEntities Db = new NEMISEntities();
+            var mylearner = (from p in Db.proc_Get_Learner(UPI)
+                             select p).SingleOrDefault();
             return View(mylearner);
         }
     }

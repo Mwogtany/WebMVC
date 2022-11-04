@@ -8948,6 +8948,13 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
         </Function>
         <Function Name="proc_Get_InstTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_Get_InstTypes3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_Get_Learner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mUPI" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Get_LearnerRecord3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mUPI" Type="nvarchar" Mode="In" />
+          <Parameter Name="mBCert" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="proc_Get_LearnersPerInstitution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mInst" Type="nvarchar" Mode="In" />
           <Parameter Name="mGrade" Type="nvarchar" Mode="In" />
@@ -22593,6 +22600,13 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
           </FunctionImport>
           <FunctionImport Name="proc_Get_PageRecords" ReturnType="Collection(Int32)" />
           <FunctionImport Name="proc_GetLearnerCategory" ReturnType="Collection(NEMISModel.proc_GetLearnerCategory_Result1)" />
+          <FunctionImport Name="proc_Get_Learner" ReturnType="Collection(NEMISModel.proc_Get_Learner_Result)">
+            <Parameter Name="mUPI" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Get_LearnerRecord3" ReturnType="Collection(NEMISModel.proc_Get_LearnerRecord3_Result)">
+            <Parameter Name="mUPI" Mode="In" Type="String" />
+            <Parameter Name="mBCert" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_Get_Categories_Result">
           <Property Type="String" Name="CatID" Nullable="false" MaxLength="1" />
@@ -22885,6 +22899,110 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
         <ComplexType Name="proc_GetLearnerCategory_Result1">
           <Property Type="String" Name="Code" Nullable="false" MaxLength="1" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="proc_Get_Learner_Result">
+          <Property Type="String" Name="UPI" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Names" Nullable="true" MaxLength="112" />
+          <Property Type="String" Name="Surname" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="OtherNames" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Institution_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Email_Address" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Postal_Address" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Father_UPI" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mother_UPI" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Guardian_UPI" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Father_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Father_IDNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Father_Contacts" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mother_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mother_IDNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Mother_Contacts" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Guardian_Contacts" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Guardian_IDNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Guardian_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Special_Medical_Condition" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Medical_Name" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Any_Special_Medical_Condition" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Institution_Code" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Sub_County_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Sub_County_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Nationality" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="County_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="County_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="LGender" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Country_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Disability_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="DOB" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DOB2" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IsDateDOB" Nullable="true" />
+          <Property Type="String" Name="Birth_Cert_No" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="ID_No" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Disability_Code" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Class_Code" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="County_Learner" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Sub_County_Learner" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Special_Needs_List" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Father_Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mother_Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Guardian_Email" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AGE" Nullable="true" />
+          <Property Type="String" Name="NHIF_No" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="proc_Get_LearnerRecord3_Result">
+          <Property Type="String" Name="xCat" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="xCatDesc" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="UIC" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="UPI" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Names" Nullable="true" MaxLength="112" />
+          <Property Type="String" Name="Surname" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="OtherNames" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Institution_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Email_Address" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Postal_Address" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Father_UPI" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mother_UPI" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Guardian_UPI" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Father_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Father_IDNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Father_Contacts" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mother_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mother_IDNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Mother_Contacts" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Guardian_Contacts" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Guardian_IDNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Guardian_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Special_Medical_Condition" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Medical_Name" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Any_Special_Medical_Condition" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Institution_Code" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Sub_County_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Sub_County_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Nationality" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="County_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="County_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="LGender" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Country_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Disability_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="DOB" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IsDateDOB" Nullable="true" />
+          <Property Type="String" Name="Birth_Cert_No" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="ID_No" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Disability_Code" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Class_Code" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="County_Learner" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Sub_County_Learner" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Special_Needs_List" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Father_Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mother_Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Guardian_Email" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -31774,6 +31892,118 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
               <ComplexTypeMapping TypeName="NEMISModel.proc_GetLearnerCategory_Result1">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_Get_Learner" FunctionName="NEMISModel.Store.proc_Get_Learner">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEMISModel.proc_Get_Learner_Result">
+                <ScalarProperty Name="UPI" ColumnName="UPI" />
+                <ScalarProperty Name="Names" ColumnName="Names" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="OtherNames" ColumnName="OtherNames" />
+                <ScalarProperty Name="Institution_Name" ColumnName="Institution_Name" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Postal_Address" ColumnName="Postal_Address" />
+                <ScalarProperty Name="Father_UPI" ColumnName="Father_UPI" />
+                <ScalarProperty Name="Mother_UPI" ColumnName="Mother_UPI" />
+                <ScalarProperty Name="Guardian_UPI" ColumnName="Guardian_UPI" />
+                <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+                <ScalarProperty Name="Father_IDNo" ColumnName="Father_IDNo" />
+                <ScalarProperty Name="Father_Contacts" ColumnName="Father_Contacts" />
+                <ScalarProperty Name="Mother_Name" ColumnName="Mother_Name" />
+                <ScalarProperty Name="Mother_IDNo" ColumnName="Mother_IDNo" />
+                <ScalarProperty Name="Mother_Contacts" ColumnName="Mother_Contacts" />
+                <ScalarProperty Name="Guardian_Contacts" ColumnName="Guardian_Contacts" />
+                <ScalarProperty Name="Guardian_IDNo" ColumnName="Guardian_IDNo" />
+                <ScalarProperty Name="Guardian_Name" ColumnName="Guardian_Name" />
+                <ScalarProperty Name="Special_Medical_Condition" ColumnName="Special_Medical_Condition" />
+                <ScalarProperty Name="Medical_Name" ColumnName="Medical_Name" />
+                <ScalarProperty Name="Any_Special_Medical_Condition" ColumnName="Any_Special_Medical_Condition" />
+                <ScalarProperty Name="Institution_Code" ColumnName="Institution_Code" />
+                <ScalarProperty Name="Sub_County_Code" ColumnName="Sub_County_Code" />
+                <ScalarProperty Name="Sub_County_Name" ColumnName="Sub_County_Name" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="County_Code" ColumnName="County_Code" />
+                <ScalarProperty Name="County_Name" ColumnName="County_Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LGender" ColumnName="LGender" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Disability_Name" ColumnName="Disability_Name" />
+                <ScalarProperty Name="Class_Name" ColumnName="Class_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="DOB2" ColumnName="DOB2" />
+                <ScalarProperty Name="IsDateDOB" ColumnName="IsDateDOB" />
+                <ScalarProperty Name="Birth_Cert_No" ColumnName="Birth_Cert_No" />
+                <ScalarProperty Name="ID_No" ColumnName="ID_No" />
+                <ScalarProperty Name="Disability_Code" ColumnName="Disability_Code" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="County_Learner" ColumnName="County_Learner" />
+                <ScalarProperty Name="Sub_County_Learner" ColumnName="Sub_County_Learner" />
+                <ScalarProperty Name="Special_Needs_List" ColumnName="Special_Needs_List" />
+                <ScalarProperty Name="Father_Email" ColumnName="Father_Email" />
+                <ScalarProperty Name="Mother_Email" ColumnName="Mother_Email" />
+                <ScalarProperty Name="Guardian_Email" ColumnName="Guardian_Email" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="NHIF_No" ColumnName="NHIF_No" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_Get_LearnerRecord3" FunctionName="NEMISModel.Store.proc_Get_LearnerRecord3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEMISModel.proc_Get_LearnerRecord3_Result">
+                <ScalarProperty Name="xCat" ColumnName="xCat" />
+                <ScalarProperty Name="xCatDesc" ColumnName="xCatDesc" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UPI" ColumnName="UPI" />
+                <ScalarProperty Name="Names" ColumnName="Names" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="OtherNames" ColumnName="OtherNames" />
+                <ScalarProperty Name="Institution_Name" ColumnName="Institution_Name" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Postal_Address" ColumnName="Postal_Address" />
+                <ScalarProperty Name="Father_UPI" ColumnName="Father_UPI" />
+                <ScalarProperty Name="Mother_UPI" ColumnName="Mother_UPI" />
+                <ScalarProperty Name="Guardian_UPI" ColumnName="Guardian_UPI" />
+                <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+                <ScalarProperty Name="Father_IDNo" ColumnName="Father_IDNo" />
+                <ScalarProperty Name="Father_Contacts" ColumnName="Father_Contacts" />
+                <ScalarProperty Name="Mother_Name" ColumnName="Mother_Name" />
+                <ScalarProperty Name="Mother_IDNo" ColumnName="Mother_IDNo" />
+                <ScalarProperty Name="Mother_Contacts" ColumnName="Mother_Contacts" />
+                <ScalarProperty Name="Guardian_Contacts" ColumnName="Guardian_Contacts" />
+                <ScalarProperty Name="Guardian_IDNo" ColumnName="Guardian_IDNo" />
+                <ScalarProperty Name="Guardian_Name" ColumnName="Guardian_Name" />
+                <ScalarProperty Name="Special_Medical_Condition" ColumnName="Special_Medical_Condition" />
+                <ScalarProperty Name="Medical_Name" ColumnName="Medical_Name" />
+                <ScalarProperty Name="Any_Special_Medical_Condition" ColumnName="Any_Special_Medical_Condition" />
+                <ScalarProperty Name="Institution_Code" ColumnName="Institution_Code" />
+                <ScalarProperty Name="Sub_County_Code" ColumnName="Sub_County_Code" />
+                <ScalarProperty Name="Sub_County_Name" ColumnName="Sub_County_Name" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="County_Code" ColumnName="County_Code" />
+                <ScalarProperty Name="County_Name" ColumnName="County_Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LGender" ColumnName="LGender" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Disability_Name" ColumnName="Disability_Name" />
+                <ScalarProperty Name="Class_Name" ColumnName="Class_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="IsDateDOB" ColumnName="IsDateDOB" />
+                <ScalarProperty Name="Birth_Cert_No" ColumnName="Birth_Cert_No" />
+                <ScalarProperty Name="ID_No" ColumnName="ID_No" />
+                <ScalarProperty Name="Disability_Code" ColumnName="Disability_Code" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="County_Learner" ColumnName="County_Learner" />
+                <ScalarProperty Name="Sub_County_Learner" ColumnName="Sub_County_Learner" />
+                <ScalarProperty Name="Special_Needs_List" ColumnName="Special_Needs_List" />
+                <ScalarProperty Name="Father_Email" ColumnName="Father_Email" />
+                <ScalarProperty Name="Mother_Email" ColumnName="Mother_Email" />
+                <ScalarProperty Name="Guardian_Email" ColumnName="Guardian_Email" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

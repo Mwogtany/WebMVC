@@ -599,5 +599,27 @@ namespace WebMVC.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_GetLearnerCategory_Result1>("proc_GetLearnerCategory");
         }
+    
+        public virtual ObjectResult<proc_Get_Learner_Result> proc_Get_Learner(string mUPI)
+        {
+            var mUPIParameter = mUPI != null ?
+                new ObjectParameter("mUPI", mUPI) :
+                new ObjectParameter("mUPI", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_Learner_Result>("proc_Get_Learner", mUPIParameter);
+        }
+    
+        public virtual ObjectResult<proc_Get_LearnerRecord3_Result> proc_Get_LearnerRecord3(string mUPI, string mBCert)
+        {
+            var mUPIParameter = mUPI != null ?
+                new ObjectParameter("mUPI", mUPI) :
+                new ObjectParameter("mUPI", typeof(string));
+    
+            var mBCertParameter = mBCert != null ?
+                new ObjectParameter("mBCert", mBCert) :
+                new ObjectParameter("mBCert", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_LearnerRecord3_Result>("proc_Get_LearnerRecord3", mUPIParameter, mBCertParameter);
+        }
     }
 }

@@ -44,9 +44,9 @@
                         txt1 += '<td style="text-align:left;">' +
                             value.NHIF_No + '</td>';
                         txt1 += '<td style="text-align:left;">' +
-                            '<a href="/School/Learner/Edit/' + value.UPI + '">View</a>  |' +
-                            '<a href="/School/Learner/Delete/' + value.UPI + '">Delete</a>  |' +
-                            '<a href="/School/Learner/Move/' + value.UPI + '">Move</a>' + '</td>';
+                            '<a href="/School/EditLearner/' + value.UPI + '">View</a>  |' +
+                            '<a href="/School/DeleteLearner/' + value.UPI + '">Delete</a>  |' +
+                            '<a href="/School/MoveLearner/' + value.UPI + '">Move</a>' + '</td>';
                         txt1 += '</tr>';
                     });
                     $('#datatable tr').first().after(txt1);

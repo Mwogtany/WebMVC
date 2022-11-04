@@ -1190,10 +1190,16 @@
     <Compile Include="Models\proc_Get_InstTypes_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\proc_Get_LearnerRecord3_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\proc_Get_LearnersPerInstitution_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proc_Get_LearnerTmpPerInstitution_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_Learner_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proc_Get_Summary_Institutions_Per_Level_Result.cs">
@@ -1611,7 +1617,6 @@
     <Content Include="Views\Shared\images\trademark.png" />
     <Content Include="Views\Shared\images\v_arrow.gif" />
     <Content Include="Views\Shared\images\v_arrow_over.gif" />
-    <Content Include="v_arrow.gif" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1668,6 +1673,7 @@
     <Content Include="Views\School\_PartialGenCenter.cshtml" />
     <Content Include="Views\School\MyLearners.cshtml" />
     <Content Include="Views\Shared\images\v_arrow.gi" />
+    <Content Include="Views\School\EditLearner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
