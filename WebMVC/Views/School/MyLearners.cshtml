@@ -1,0 +1,134 @@
+﻿@model WebMVC.Models.ListLearnerViewModel
+@{
+    ViewBag.Title = "MyLearners";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var learners = Model.LearnerViewModelList;
+    var i = 1;
+}
+
+<script src="~/Scripts/SchoolLearners.js"></script>
+<h2>LEARNERS LISTING</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Grade", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.DropDownList("classcode", Model.GradeList, "--Select--", new { @id = "ddlGrade", @class = "form-control ddlGrade" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Catergory", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.DropDownList("category", Model.CategoryList, "--Select--", new { @id = "ddlCat", @class = "form-control ddlCat" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Records per Page", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.DropDownList("PageRecords", Model.PageRecordsList, "--Select--", new { @id = "ddlRecs", @class = "form-control ddlRecs" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <table class="table" id="datatable">
+        <tr>
+            <th>
+                ##
+            </th>
+            <th>
+                Photo
+            </th>
+            <th>
+                Learner UPI
+            </th>
+            <th>
+                Learner Name
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+               Date of Birth
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Birth Cert No
+            </th>
+            <th>
+                Disability
+            </th>
+            <th>
+               Medical Condition
+            </th>
+            <th>
+                Home Phone Number
+            </th>
+            <th>
+                NHIF No
+            </th>
+            <th></th>
+        </tr>
+        @if (learners != null)
+        {
+            foreach (var item in learners)
+            {
+                var mid = item.UPI.ToString();
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                    
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UPI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Names)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LGender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AGE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birth_Cert_No)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disability_Name2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Medical_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NHIF_No)
+                    </td>
+                    <td>
+                        <a href="/@ViewData["ExtLocalPath"]Learner/Edit/@mid">View</a>  |
+                        @Html.ActionLink("Delete", "Delete", new { id = mid }) |
+                        @Html.ActionLink("Move", "Move", new { id = mid })
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </table>
+</div>
+

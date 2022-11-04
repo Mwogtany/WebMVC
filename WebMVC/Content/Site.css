@@ -1,0 +1,60 @@
+﻿body {
+    padding-top: 0;
+    padding-bottom: 20px;
+    align-content:center;
+    text-align:center;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content, .header, .menu {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+#gklogo {
+    width: 110px;
+    height: 100px;
+    margin: 0 0 0 auto;
+    background: url('GOKLogo.png') no-repeat center center;
+    background-size: contain;
+    text-align: left;
+}
+
+#nemislogo {
+    width: 160px;
+    height: 100px;
+    margin: 0 0 0 auto;
+    background: url('trademark.png') no-repeat center center;
+    background-size: contain;
+    text-align: right;
+}
+
+table, th, td {
+         border: solid 1px #bbbbbb;
+         border-collapse: collapse;
+         padding: 2px;
+       }
+
+ol {
+  padding: 20px;
+}
+
+ol li {
+  padding: 5px;
+  margin-left: 1px;
+}

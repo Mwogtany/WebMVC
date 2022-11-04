@@ -1,0 +1,14 @@
+﻿<script src="~/Scripts/SchData.js"></script>
+@if (Session["mRegCompletion"].ToString() == "IN-COMPLETE")
+{
+    <asp:Label ID="Label1" runat="server" Text="KEY INFORMATION MISSING - INSTITUTION BIO-DATA" 
+               ForeColor="Red" Font-Size="Medium" Font-Bold="True"></asp:Label>
+    <div class="CenterBadCnt"></div>
+}
+
+@if (Session["LEVELCODE"].ToString() == "3" && Session["mSchType"].ToString() == "Public")
+{
+    <div class="CGenCnt"></div>
+}
+<div class="mSchEnrol"></div>
+<div class="mSchSum"></div>

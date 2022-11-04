@@ -1,0 +1,120 @@
+﻿@using WebMVC.Models
+@{
+    var menu = Session["RsMMenu"] as List<MainMenuViewModel>;
+    var ccount = 0;
+    List<SubMenuViewModel> submenu;
+    var myhome = (string)Session["HomeController"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - NEMIS</title>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/c_config.js"></script>
+    <script src="~/Scripts/c_menu.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container body-content text-center">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="gklogo" class="col-md-2 gklogo">
+                </div>
+                <div class="col-md-8 text-center">
+                    <h2>@AppState["customCountryName"]</h2>
+                    <h3>@AppState["customOrgName"]</h3>
+                </div>
+                <div id="nemislogo" class="col-md-2 nemislogo">
+                </div>
+            </div>
+        </div>
+
+        <div class="menu text-center row">
+            @if (Request.IsAuthenticated && menu != null)
+            {
+                <script type="text/javascript">privilage = '@Session["mUserName"]';</script>
+                <script type="text/javascript">instcode = '@Session["Institution_Code"]';</script>
+
+                <script type="text/javascript">h_arrow = '[@Session["headurl"].ToString()images/h_arrow.gif]';</script>
+                @*<script type="text/javascript">h_arrow = '@Session["h_arrow"]';</script>*@
+                <script type="text/javascript">h_arrow_over = '[@Session["headurl"].ToString()images/h_arrow_over.gif]';</script>
+                @*<script type="text/javascript">h_arrow_over = '@Session["h_arrow_over"]';</script>*@
+                <script type="text/javascript">v_arrow = '[@Session["headurl"].ToString()images/v_arrow.gif]';</script>
+                @*<script type="text/javascript">v_arrow = '@Session["v_arrow"]';</script>*@
+                <script type="text/javascript">v_arrow_over = '[@Session["headurl"].ToString()images/v_arrow_over.gif]';</script>
+                @*<script type="text/javascript">v_arrow_over = '@Session["v_arrow_over"]';</script>*@
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar">---</span>
+                        <span class="icon-bar">---</span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul id="Menu1" class="nav navbar-nav MM">
+                        <li>
+                            @Html.ActionLink("Home", "Index", myhome)
+                        </li>
+                        @foreach (var item in menu)
+                        {
+                            //var subkey = item.ssmenkey;
+                            var sse = "RsSMenu" + ccount.ToString();
+
+                            submenu = Session[sse] as List<SubMenuViewModel>;
+                            <li>
+                                <a title=""> @item.LinkTitle |</a>
+                                <ul>
+                                    @foreach (var sitem in submenu)
+                                    {
+                                        <li>@Html.ActionLink(sitem.LinkTitle, sitem.Action, sitem.Controller, new { area = "" }, null)</li>
+                                    }
+                                </ul>
+                            </li>
+                            ccount++;
+                        }
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar">---</span>
+                        <span class="icon-bar">---</span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul id="Menu1" class="nav navbar-nav MM">
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            }
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div>
+        <div class="row">
+            <footer class=" text-center">
+                <p>&copy; @DateTime.Now.Year - @AppState["customOrgName"] - NEMIS | Terms and Conditions nemis@education.go.ke</p>
+                <p>Disclaimer: You are liable for any false, inaccurate, inappropriate or incomplete information submited on NEMIS.</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

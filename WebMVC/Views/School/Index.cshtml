@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-0">
+                        <div class="col-md-2">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <div class="col-md-0" align="left">
+                                        @if (Session["LEVELCODE"].ToString() == "1")
+                                        {
+                                            @Html.Partial("_PartialEcdeLeft")<hr />
+                                        }
+                                        @if (Session["LEVELCODE"].ToString() == "2")
+                                        {
+                                            @Html.Partial("_PartialPrimLeft")<hr />
+                                        }
+                                        @if (Session["LEVELCODE"].ToString() == "3")
+                                        {
+                                            @Html.Partial("_PartialSecLeft")<hr />
+                                        }
+                                        @if (Session["LEVELCODE"].ToString() == "4")
+                                        {
+                                            @Html.Partial("_PartialTerLeft")<hr />
+                                        }
+                                        @Html.Partial("_PartialGenLeft")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <div class="col-md-0" align="left">
+                                        <div id="DivCenterCnt" runat="server">
+                                            <div class="CenterCnt">
+                                                <div class="col-md-0" align="center" style="color: red; ">
+                                                    <strong> <marquee behavior="left" style="font-size: large">ALL SCHOOLS: KINDLY CONFIRM IF YOU HAVE ALL LEARNERS CAPTURED (UNDER BOTH WITH BIRTH CERTIFICATES / WITHOUT BIRTH CERTIFICATES). ANY MISSING, KINDLY RE-CAPTURE. </marquee>  </strong>
+                                                </div>
+                                                @if (Session["LEVELCODE"].ToString() == "3")
+                                                {
+                                                    <div class="col-md-0" align="center" style="color: #0000FF; ">
+                                                        <strong> <marquee behavior="left" style="font-size: large">SECONDARY SCHOOLS: UPDATE INSTITUTION-KNEC CODES (IF NEW, USE NEMIS CODE) TO BE ABLE TO VIEW FORM ONE SELECTION LIST </marquee>  </strong>
+                                                    </div>
+                                                }
+                                                <asp:Label ID="LblMyNB" runat="server" />
+                                                <asp:Label ID="LblMessage" Text="NB: 1). Ensure the KNEC Code captured for your school is one used in KNEC Results.<br/>"
+                                                           runat="server" ForeColor="Red" />
+                                                <asp:Label ID="LblLrns" Text="2). Ensure Your Learners (in both Public/Private Schools) are Captured as this will be used in Education Planning and Reporting.<br/>" runat="server" ForeColor="Red" />
+                                                <asp:Label ID="LblCap" runat="server" ForeColor="Red" />
+                                                <p style="text-align: left">
+                                                    The National Education Management Information System (NEMIS) is web based
+                                                    data management solution, which aims at integrating all School Information/Data Needs used in Planning and Resource
+                                                    Allocation in the Education Sector. Ensure that your Institution's Information is Accurate and up-to-date.
+                                                </p>
+                                                @Html.Partial("_PartialGenCenter")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <div class="col-md-0" align="left">
+                                        @if (Session["LEVELCODE"].ToString() == "1")
+                                        {
+                                            @Html.Partial("_PartialEcdeRight")<hr />
+                                        }
+                                        @if (Session["LEVELCODE"].ToString() == "2")
+                                        {
+                                            @Html.Partial("_PartialPrimRight")<hr />
+                                        }
+                                        @if (Session["LEVELCODE"].ToString() == "3")
+                                        {
+                                            @Html.Partial("_PartialSecRight")<hr />
+                                        }
+                                        @if (Session["LEVELCODE"].ToString() == "4")
+                                        {
+                                            @Html.Partial("_PartialTerRight")<hr />
+                                        }
+                                        @Html.Partial("_PartialGenRight")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

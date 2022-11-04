@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    var myhome = (string)Session["HomeController"];
+    var msurname = (string)Session["surname"];
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="text-right">
+            @Html.ActionLink("Hello " + msurname + "!", "Index", myhome, routeValues: null, htmlAttributes: new { title = "Home" })
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </div>
+    }
+}

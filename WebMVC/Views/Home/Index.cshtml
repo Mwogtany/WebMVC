@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebMVC.Models.CONTENTITEM>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<center>
+    <div class="col-md-12">
+        <div class="col-md-2">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div align="left">
+                        <h2>Login</h2>
+                        <p>
+                            Click to @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }).
+                        </p>
+                        <h2>Register</h2>
+                        <p>
+                            Click to @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }).
+                        </p>
+                        <p style="color: red">
+                            School Managers, Head of Institution and Parents DO NOT REGISTER ON THIS Portal.
+                            <br /><br />Parents are advised to check with their Schools for Children NEMIS Information Update.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div align="left">
+                        <ol>
+                            @foreach (var item in Model)
+                        {
+                            var mycont = Html.Raw(item.LinkContent);
+                                <li>@item.Title</li>
+                                <p>@mycont</p>
+                        }
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">COVID RESOURCES</div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-0" style="text-align:left">
+                        <a class="five" target="_blank" href="https://education.go.ke/index.php/downloads/category/52-covid-19-resources">COVID GUIDELINES</a>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="panel-title">Upcoming Events/Notification</div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-0" style="text-align:left">
+
+                        <p style="text-align:left">
+                            <a class="five" target="_blank" href="cbcnemis.aspx">CBC Evaluation</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="panel-title">Current Users</div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-0" style="text-align:center; font-size: x-large; font-weight: bold;">
+                        1
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>

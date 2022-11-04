@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-0">
+                        <div class="col-md-2">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <div class="col-md-0" align="left">
+                                        @Html.Partial("_PartialGenLeft")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <div class="col-md-0" align="left">
+                                        <p style="text-align: left">
+                                            The National Education Management Information System (NEMIS) is web based
+                                            data management solution which collects data and information from education institutions;
+                                            processes and reports the status of designed indicators; and provides the sector a solid
+                                            ground for effective management to ensure that every Learner counts.
+                                        </p>
+                                        <p>
+                                            Kenya having been hailed as a regional leader in ICT development, NEMIS adds to the growing
+                                            portfolio of domestic solutions and initiatives towards a digital society.
+                                        </p>
+                                    </div>
+                                    @Html.Partial("_PartialGenCenter")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <div class="col-md-0" align="left">
+                                        @Html.Partial("_PartialGenRight")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,20 @@
+﻿<p class="auto-style12">
+    <b><a class="five" href="Admission/formoneproject.aspx">2022 Form 1 Projections</a></b>
+</p>
+<p class="auto-style12">
+    <b><a class="five" href="Admission/Listlearners.aspx">Form 1 Selection List</a></b>
+</p>
+<b>
+    <a class="five" href="Admission/Listlearnersrep.aspx">Form 1 Admission / Reported List</a>
+    (<span class="auto-style13">Capture Bio-Data and get UPIs for Form Ones</span>)
+</b>
+<br /><br />
+@if (Session["mSchType"].ToString() == "Public")
+{
+    <p>
+        <b>
+            <a class="five" href="Finance/uploadack.aspx">Upload Capitation Receipts</a>
+            (<span class="auto-style13">Capitation Acknowledgement</span>)
+            <br /><br />NHIF Numbers:To Generate NHIF, Capture Learner Contact Details.
+    </p>
+}

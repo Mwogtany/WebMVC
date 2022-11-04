@@ -1,0 +1,1730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2459C618-BF69-4814-87DA-35C3439A1B0E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebMVC</RootNamespace>
+    <AssemblyName>WebMVC</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/ASP-WebNEMISgroup-966f/resourcegroups/WebNEMIS_group/providers/microsoft.insights/components/Azure subscription 1</ApplicationInsightsResourceId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.9\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Api\CascadeController.cs" />
+    <Compile Include="Controllers\Api\DashboardController.cs" />
+    <Compile Include="Controllers\Api\SchDashboardController.cs" />
+    <Compile Include="Controllers\Api\SchoolController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Models\ACCESSLOG.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTIVITY_LEVEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSIONATTACHMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_DATES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_DIFFERED_REPORTING.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_LOGS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_LOGS_ARCHIVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_PROJECTIONS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REPORTED_CAPTURED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REPORTED_CAPTURED_ARCHIVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REPORTED_CAPTURED_REMOVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REPORTING.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REPORTINGBACKUP21JAN.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REPORTING_ARCHIVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REPORTING_TEMP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTSTEMP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTSTEMP_ARCHIVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_ARCHIVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_BACKUP_11AUG2021.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_KNOCK_OFF.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_KNOCK_OFF_ARCHIVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_ON.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_ON_LOG.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_OPEN.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_OPEN_ARCHIVE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_PUBLIC.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_REQUESTS_STAGING.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_SELECTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_SELECTION2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_SELECTION2_DONE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMISSION_UPLOADS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APILogin.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ASSETS_DESCRIPTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ASSET_CLASSIFICATION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ASSET_STATUS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ASSET_TYPES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AWARD.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankAccount.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankAccounts_DEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankAccountType.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BANKS_BRANCH.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BANKS_REGISTER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BUILDING_MATERIAL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CALAMITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CALAMITY_OCCURENCE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CALAMITY_STATUS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_ACCOUNT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_ACCOUNT_MISSED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_ACCOUNT_MISSED2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_ACKNOWLEDGEMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_AUDIT_ANALYSIS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_AUDIT_ANALYSIS_NEW.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_ENTITY_DESCRIPTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_ENTITY_FUNDING.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_ERROR_RECOVERIES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_14May2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_2019_DETAILED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_2020_RecoveriesFor2019Excesses.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_BACKUP13Aug2020.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_BACKUP_10June2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_BACKUP_12APR.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_BACK_SEPT2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_BAKCUPOCT2020.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_BASE2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_Details.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_DRAFT0.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_DRATFT3.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_Final_24April2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_JULY2019_BACKUP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_JULY2020Details.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Details222.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Details25April.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Details333.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Details444.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Details6666.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Details7777.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019DetailsSHULE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019DetailsX.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019DetailsX123.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019DetailsXX.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Detailsxx123.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_MAY2019Detailsxxx.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_OCT2020Variance.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_REIMBURSEMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_SEP2019BACK8DEC2020.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_SEPT_COMPUTED_27AUG2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_TESTING.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_TRANSITION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_TRANSITION_JULY2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_DISBURSEMENT_TRANSITION_SEPT_DETAILED2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_ENROLMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_MISSED_FROM_MAY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FINAL_MISSED_SCHOOLS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FUND.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_FUND_FINAL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_INSTITUTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_INSTITUTION2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_HCOUNT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_HIGHCOUNT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_HIGHCOUNT2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_HIGHCOUNT3.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_LCOUNT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_LOWCOUNT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_LOWCOUNT2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_LEARNERS_REMOVED7DEC2020.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECONCILE_TRANSACTIONID.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERIES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERIES_AUG2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERIES_AUG2019_IMPLEMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERIES_DEC2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERIES_MAY2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT_BACKUP_12APR.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT_BACKUP_24April2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT_DIRTY_24April2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT_Draft2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT_DRAFT3.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT_NEWEFFECT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_AMOUNT_SEPTEMBER_AUDITREC2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_DESCRIPTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_REIMBURSEMENT_Details.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_RECOVERY_WHOLEAMOUNT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_VERIFY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAPITATION_VERIFY2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CBCCenter.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CBCEvaluationMatrix.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLASS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONSTITUENCY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONTENTITEM.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COUNTRY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COUNTY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COUNTYDLPII.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COURSE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CO_CORRICULAR_ACTIVITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CO_CURRICULAR_LEVEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DASHBOARDITEM.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_DESKS_SHORTAGE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_DLP_POWER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_DROPOUTS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_ENROLMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_PERSONNEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_SINGLEPIECE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_SPECIAL_NEEDS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_STREAMS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DATASHEET_TEXTBOOKS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DECEASED_REPORTING.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEF_DROPOUT_REASONS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEF_ELECTRICITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEF_WATERSOURCE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DELETED_INSTITUTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DELETED_LEARNERS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEL_INSTITUTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEPARTMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEPARTMENTUSER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEPARTMENTUSERCATEGORy.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DEVELOPMENT_FUND.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DISABILITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DLPLOT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DOUBTFULSCHOOL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDUCATION_SYSTEMS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMPLOYEE_TYPES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ETHNICITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EXAMINER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EXPENDITUREITEM.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FEE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FEEITEM.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPEClearedList.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FUNDING_SOURCE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FUND_AGENCY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FUND_AGENCY_PROGRAMME.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FUND_AGENCY_PROGRAMME_PAYMENTMODE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GRADE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INACTIVE_REASONS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INCOME_RETURN.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTIONEXPENDITURE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_ACCOMMODATION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_ADMIT_OTHERCLASSES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_ADMIT_OTHERCLASSES_FINAL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_ASSETS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_CATEGORY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_CLUSTERS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_CO_CURRICULAR.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_DHIS_DATA.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_DHIS_DATA_GRADE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_DHIS_DRUG.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_DHIS_LIST.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_DHIS_TREATMENTDATA.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_DHIS_TREATMENTDATA_GRADE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_EDUCATION_SYSTEM.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_FORMALITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_GENDER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_GEOADDRESS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_INFRASTRUCTURE_PROGRESS_STATUS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_INFRASTRUCTURE_PROJECTS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_INFRASTRUCTURE_PROJECTS_DETAIL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_INFRASTRUCTURE_PROJECTS_DOCUMENTS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_INFRASTRUCTURE_PROJECTS_DOCUMENT_TYPES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_INFRASTRUCTURE_PROJECTS_PAYMENTS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_LEARNERS_SUMMARIES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_LEVEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_MOBILITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_NAME_CHANGE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_NAME_CHANGE_DONE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_OWNERSHIP_DOCUMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_PREMISE_OWNERSHIP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_PROPRIETOR.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_REPORTED_CASES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_REPORTED_CLASS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_REPORTED_CLASS_REP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_REPORTED_FAILED_REASONS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_REPORTED_FAIL_CAUSES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_RESIDENCE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_STAFF.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_STAFFX.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_STAFF_DECEASED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_STAFF_DEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_STAFF_NEW.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_STAFF_ONMOBILITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_STATUS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_SUMMARIES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_TERM.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_TYPES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_UTILITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_WASH.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_WASH_HYG.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_WASH_SAN.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSTITUTION_WASH_WATER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Instution_Sponsor.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INTEGRATIONMASTER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INTEGRATION_EMAIL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INTEGRATION_SMS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LearnerDOBTempDb.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNERMISSED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNERSLEVEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNERS_CLEANING_JPCT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNERS_LATEST_EXITED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNERS_PROGRESSION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNERS_PROGRESSION_GRADES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_ALUMNI.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_BACKUP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_DECEASED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_DEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_DIRTY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_DIRTY_ORPHAN.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_DROPOUT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_MOBILITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_MOBILITY_END.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_MOBILITY_TYPES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_NEW.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_NEW_Arc.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_NEW_CONTACTS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_NEW_CONTACTS_Arc.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_NEW_TMP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_NEW_TMP2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_NEW_TMP_Arc.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_PARENT_CONTACTS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_PERFORMANCE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_SECSTUD.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_SECSTUD_MISSING.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_TRANSFER_GRADE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_TRANSFER_GRADE_log.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_TRANSITION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_WITHOUT_BC.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEARNER_WITHOUT_BC_DEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LOGINLOG.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARITAL_STATUS_TYPES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MENU.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\moe_nhif_data.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\moe_nhif_data_inquiry.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\moe_nhif_data_removed.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\moe_nhif_data_update.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\moe_person_data_inquiry.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_ADVOCACY_STATIC.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_DELIVERABLES_STATIC.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_PERIOD.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_SCHOLARSHIPS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_TRACKING_ROUTINE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_TRACKING_ROUTINE_ADVOCACY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_TRACKING_ROUTINE_SCHOLARSHIP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MONITORING_TRACKING_ROUTINE_SCHOLARSHIPS_TYPE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MYDASHBOARD.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NATIONALITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NEMISEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NEMISEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NEMISEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NEMISEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NEMISEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewNHIFData.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\new_nhif_data.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nhif_student_data.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nhif_student_data_remove.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nhif_student_treatment.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Organization.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSON.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_ALUMNI.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_BACKUP.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_DECEASED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_DEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_DUPLICATION_FEB2019.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_NEW.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_NEW_Arc.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_STRAY_CAPITATION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERSONS_STRAY_CAPITATION_REMOVED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetInstitutionMissingData_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetLearnerCategory_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetLearnerCategory_Result1.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetMainMenu_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetMyCapitation_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetSubMenu2_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetSubMenu_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_GetUser3_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_Categories_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_ClassGrades2_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_InstTypes3_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_InstTypes_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_LearnersPerInstitution_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_LearnerTmpPerInstitution_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_Summary_Institutions_Per_Level_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_Summary_PerInstitutionsStaff_By_Gender_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_Summary_PerInstitutions_Per_Class_By_Gendermvc2_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_Summary_Staff_Per_Level_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROGRAMME.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROJECT_EXPENDITURE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROJECT_STATUS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROPRIETOR.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QUALIFICATION_TYPE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REGION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REGIONUSER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REGIONUSER2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RESPONSIBILITy.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROLE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPApprovalCycle.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPCashCashOtherFunding.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPCashCashOtherFunding_DEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPCashCashOtherFunding_Detailed.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPCashOtherDescription.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPCategoryLookUp.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodBasketCategory.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodConsumptionLookup.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodItem.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodItemsDeleted.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodItemsPurchaseOrder.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodItemsSupplied.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodLookUp.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodLookUpUsed.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodPackageGradeLookup.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodPackageLookup.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFoodUnitOfMeasureLookup.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPFundType.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchool.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolCashFunding.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolDailyAttendance.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolDailyAttendanceComplete.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolDailyFoodRelease.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolDailyFoodReleaseForCash.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolEnrolment.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolProcurementPlanForCash.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolRecieveProcuredFoodItemsForCash.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolsBankAccount.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolsDeliveryNote.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolsDeliveryNotesFoodItem.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolsFoodItem.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolsFoodItemsDetailed.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolsFoodItemsDetailed_PackageGrade.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolsLog.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolStore.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchoolStoreForCash.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchools_Final_Disbursement.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchools_Final_Disbursement_Detailed.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSchools_Learners.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSubCountyRoutesLookUp.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSubCountyTransportersLookUp.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSubCountyWarehous.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPSuppliersLookUp.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPTermLookUp.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPTransporterLookup.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPVehiclesLookup.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPWaybillBasic.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMPWayBillDetail.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPECIAL_MEDICAL_CONDITION_TYPE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPECIAL_NEEDS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STAFF_MOBILITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STAFF_MOBILITY_TYPES.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STAFF_QUALIFICATIONS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STATIC_REGISTER_QUESTION.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STATUS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STATUS_TYPE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STUDY_AREA.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ST_DESIGNATIONS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUBJECT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUBMENU.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUBMENUROLE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUB_COUNTY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYSTEMLOG.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYSTEMLOGSMASTER.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\System_parameters.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TALENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TALENT_TYPE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TEACHERS_RESPONSIBILITY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TEACHING_AREAS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TEACHING_MATERIALS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TEMPCAPDATA.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TERM.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TERM_OF_SERVICE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TRAINING_INSTITUTIONS.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UNCAPTUREDREPORTED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UNCAPTUREDREPORTED2.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UNCAPTUREDREPORTED2_RETURN.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UPI_GENERATOR.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UPI_USED.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERCATEGORY.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERROLEASSIGNMENT.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UTILITy.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UTUMISHI_DEL.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\AccountBindingModels.cs" />
+    <Compile Include="Models\ViewModels\AdminViewModel.cs" />
+    <Compile Include="Models\ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\SchoolViewModel.cs" />
+    <Compile Include="Models\ViewModels\StaticViewModels.cs" />
+    <Compile Include="Models\vwAdmission.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwLearner.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwLearnerScholarship.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_MyLearner.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WARD.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ZONE.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\GOKLogo.png" />
+    <Content Include="Content\h_arrow.gif" />
+    <Content Include="Content\h_arrow_over.gif" />
+    <Content Include="Content\trademark.png" />
+    <Content Include="Content\v_arrow.gif" />
+    <Content Include="Content\v_arrow_over.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\GOKLogo.png" />
+    <Content Include="images\h_arrow.gif" />
+    <Content Include="images\h_arrow_over.gif" />
+    <Content Include="images\trademark.png" />
+    <Content Include="images\v_arrow.gif" />
+    <Content Include="images\v_arrow_over.gif" />
+    <Content Include="Models\NEMISEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NEMISEntities.edmx</DependentUpon>
+      <LastGenOutput>NEMISEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NEMISEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NEMISEntities.edmx</DependentUpon>
+      <LastGenOutput>NEMISEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\AdminData.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\NEMISEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NEMISEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NEMISEntities.edmx.diagram">
+      <DependentUpon>NEMISEntities.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\NEMISMVC.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\canvasjs.min.js" />
+    <Content Include="Scripts\Chart.bundle.min.js" />
+    <Content Include="Scripts\c_config.js" />
+    <Content Include="Scripts\c_menu.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-1.8.3.js" />
+    <Content Include="Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\jquery-2.2.3.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SchData.js" />
+    <Content Include="Scripts\SchoolLearners.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\images\GOKLogo.png" />
+    <Content Include="Views\Shared\images\h_arrow.gif" />
+    <Content Include="Views\Shared\images\h_arrow_over.gif" />
+    <Content Include="Views\Shared\images\trademark.png" />
+    <Content Include="Views\Shared\images\v_arrow.gif" />
+    <Content Include="Views\Shared\images\v_arrow_over.gif" />
+    <Content Include="v_arrow.gif" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="_AppStart.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\School\Index.cshtml" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\School\_PartialSecLeft.cshtml" />
+    <Content Include="Views\School\_PartialPrimLeft.cshtml" />
+    <Content Include="Views\School\_PartialEcdeLeft.cshtml" />
+    <Content Include="Views\School\_PartialTerLeft.cshtml" />
+    <Content Include="Views\School\_PartialGenLeft.cshtml" />
+    <Content Include="Views\School\_PartialEcdeRight.cshtml" />
+    <Content Include="Views\School\_PartialPrimRight.cshtml" />
+    <Content Include="Views\School\_PartialSecRight.cshtml" />
+    <Content Include="Views\School\_PartialTerRight.cshtml" />
+    <Content Include="Views\School\_PartialGenRight.cshtml" />
+    <Content Include="Views\Admin\_PartialGenLeft.cshtml" />
+    <Content Include="Views\Admin\_PartialGenRight.cshtml" />
+    <Content Include="Views\Admin\_PartialGenCenter.cshtml" />
+    <Content Include="Views\School\_PartialGenCenter.cshtml" />
+    <Content Include="Views\School\MyLearners.cshtml" />
+    <Content Include="Views\Shared\images\v_arrow.gi" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52059</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52059/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
