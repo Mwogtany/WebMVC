@@ -13,6 +13,12 @@ namespace WebMVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    "SchoolEditLearnerRoute",
+            //    "School/EditLearner/{*AllValues}",
+            //    new { Controller = "School", action = "EditLearner" }
+            //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -2,9 +2,24 @@
     var myObj, x, txt1 = "", txt3 = "", txt4 = "";
     var origin = window.location.origin;
     var mUIC = privilage;
+    var sgrade = sessionStorage.mGrade;
+    if (sgrade !== "") {
+        $('#ddlGrade').val(sgrade);
+    }
+    var scat = sessionStorage.mCatBCert;
+    if (scat !== "") {
+        $('#ddlCat').val(scat);
+    }
     var mGrade = document.getElementById('ddlGrade').value;
     var mCat = document.getElementById('ddlCat').value;
-
+    if (mCat === '1')
+    {
+        GetLearners(origin + "/api/School/Learners/" + mUIC + "/" + mGrade);
+    }
+    else
+    {
+        GetLearners(origin + "/api/School/TmpLearners/" + mUIC + "/" + mGrade);
+    }
     function GetLearners(murl) {
         $.ajax({
             url: murl,
@@ -60,6 +75,10 @@
 
     $('.ddlGrade').change(function () {
         var mGrade = document.getElementById('ddlGrade').value;
+        
+        sessionStorage.mGrade = mGrade;
+        var mgrd = sessionStorage.mGrade;
+
         var mCat = document.getElementById('ddlCat').value;
         var url = "";
         if (mCat === "1")
@@ -76,6 +95,8 @@
     $('.ddlCat').change(function () {
         var mGrade = document.getElementById('ddlGrade').value;
         var mCat = document.getElementById('ddlCat').value;
+        sessionStorage.mCatBCert = mCat;
+        var mgrd = sessionStorage.mCatBCert;
         var url = "";
         if (mCat === "1") {
             url = origin + "/api/School/Learners/" + mUIC + "/" + mGrade;
