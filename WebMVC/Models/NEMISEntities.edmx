@@ -8942,6 +8942,9 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
           <Property Name="Class_Name" Type="nvarchar" MaxLength="40" />
         </EntityType>
         <Function Name="proc_Get_Categories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_Get_ClassGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mLevel" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="proc_Get_ClassGrades2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mInst" Type="nvarchar" Mode="In" />
           <Parameter Name="mLevel" Type="nvarchar" Mode="In" />
@@ -8997,6 +9000,75 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
         </Function>
         <Function Name="proc_GetUser3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_InsLearnerWithIndex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UIC" Type="nvarchar" Mode="In" />
+          <Parameter Name="UPI" Type="nvarchar" Mode="In" />
+          <Parameter Name="Surname" Type="nvarchar" Mode="In" />
+          <Parameter Name="OtherNames" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Birth_Cert_No" Type="nvarchar" Mode="In" />
+          <Parameter Name="DOB" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nationality" Type="nvarchar" Mode="In" />
+          <Parameter Name="Entry_AS" Type="nvarchar" Mode="In" />
+          <Parameter Name="Class_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Disability" Type="nvarchar" Mode="In" />
+          <Parameter Name="MedicalNeed" Type="nvarchar" Mode="In" />
+          <Parameter Name="mPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="mEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mPBox" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMName" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGName" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFIDNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMIDNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGIDNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFContacts" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMContacts" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGContacts" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mCounty" Type="nvarchar" Mode="In" />
+          <Parameter Name="mSCounty" Type="nvarchar" Mode="In" />
+          <Parameter Name="mUserName" Type="varchar" Mode="In" />
+          <Parameter Name="mIndex" Type="varchar" Mode="In" />
+          <Parameter Name="mGenUPI" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="proc_InsLearnerWithIndexNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UIC" Type="nvarchar" Mode="In" />
+          <Parameter Name="UPI" Type="nvarchar" Mode="In" />
+          <Parameter Name="Surname" Type="nvarchar" Mode="In" />
+          <Parameter Name="OtherNames" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Birth_Cert_No" Type="nvarchar" Mode="In" />
+          <Parameter Name="DOB" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nationality" Type="nvarchar" Mode="In" />
+          <Parameter Name="Entry_AS" Type="nvarchar" Mode="In" />
+          <Parameter Name="Class_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Disability" Type="nvarchar" Mode="In" />
+          <Parameter Name="MedicalNeed" Type="nvarchar" Mode="In" />
+          <Parameter Name="mPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="mEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mPBox" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMName" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGName" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFIDNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMIDNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGIDNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFContacts" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMContacts" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGContacts" Type="nvarchar" Mode="In" />
+          <Parameter Name="mFEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mMEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mGEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="mCounty" Type="nvarchar" Mode="In" />
+          <Parameter Name="mSCounty" Type="nvarchar" Mode="In" />
+          <Parameter Name="mUserName" Type="varchar" Mode="In" />
+          <Parameter Name="mIndex" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="NEMISModelStoreContainer">
           <EntitySet Name="ACCESSLOG" EntityType="Self.ACCESSLOG" Schema="dbo" store:Type="Tables" />
@@ -22601,11 +22673,83 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
           <FunctionImport Name="proc_Get_PageRecords" ReturnType="Collection(Int32)" />
           <FunctionImport Name="proc_GetLearnerCategory" ReturnType="Collection(NEMISModel.proc_GetLearnerCategory_Result1)" />
           <FunctionImport Name="proc_Get_Learner" ReturnType="Collection(NEMISModel.proc_Get_Learner_Result)">
-            <Parameter Name="mUPI" Mode="In" Type="String" />
+          <Parameter Name="mUPI" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Get_LearnerRecord3" ReturnType="Collection(NEMISModel.proc_Get_LearnerRecord3_Result)">
             <Parameter Name="mUPI" Mode="In" Type="String" />
             <Parameter Name="mBCert" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Get_ClassGrades" ReturnType="Collection(NEMISModel.proc_Get_ClassGrades_Result)">
+          <Parameter Name="mLevel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_InsLearnerWithIndex">
+            <Parameter Name="UIC" Mode="In" Type="String" />
+            <Parameter Name="UPI" Mode="In" Type="String" />
+            <Parameter Name="Surname" Mode="In" Type="String" />
+            <Parameter Name="OtherNames" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="Birth_Cert_No" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Nationality" Mode="In" Type="String" />
+            <Parameter Name="Entry_AS" Mode="In" Type="String" />
+            <Parameter Name="Class_Code" Mode="In" Type="String" />
+            <Parameter Name="Disability" Mode="In" Type="String" />
+            <Parameter Name="MedicalNeed" Mode="In" Type="String" />
+            <Parameter Name="mPhone" Mode="In" Type="String" />
+            <Parameter Name="mEmail" Mode="In" Type="String" />
+            <Parameter Name="mPBox" Mode="In" Type="String" />
+            <Parameter Name="mFName" Mode="In" Type="String" />
+            <Parameter Name="mMName" Mode="In" Type="String" />
+            <Parameter Name="mGName" Mode="In" Type="String" />
+            <Parameter Name="mFIDNo" Mode="In" Type="String" />
+            <Parameter Name="mMIDNo" Mode="In" Type="String" />
+            <Parameter Name="mGIDNo" Mode="In" Type="String" />
+            <Parameter Name="mFContacts" Mode="In" Type="String" />
+            <Parameter Name="mMContacts" Mode="In" Type="String" />
+            <Parameter Name="mGContacts" Mode="In" Type="String" />
+            <Parameter Name="mFEmail" Mode="In" Type="String" />
+            <Parameter Name="mMEmail" Mode="In" Type="String" />
+            <Parameter Name="mGEmail" Mode="In" Type="String" />
+            <Parameter Name="mCounty" Mode="In" Type="String" />
+            <Parameter Name="mSCounty" Mode="In" Type="String" />
+            <Parameter Name="mUserName" Mode="In" Type="String" />
+            <Parameter Name="mIndex" Mode="In" Type="String" />
+            <Parameter Name="mGenUPI" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_InsLearnerWithIndexNew" ReturnType="Collection(NEMISModel.proc_InsLearnerWithIndexNew_Result)">
+            <Parameter Name="UIC" Mode="In" Type="String" />
+            <Parameter Name="UPI" Mode="In" Type="String" />
+            <Parameter Name="Surname" Mode="In" Type="String" />
+            <Parameter Name="OtherNames" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="Birth_Cert_No" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Nationality" Mode="In" Type="String" />
+            <Parameter Name="Entry_AS" Mode="In" Type="String" />
+            <Parameter Name="Class_Code" Mode="In" Type="String" />
+            <Parameter Name="Disability" Mode="In" Type="String" />
+            <Parameter Name="MedicalNeed" Mode="In" Type="String" />
+            <Parameter Name="mPhone" Mode="In" Type="String" />
+            <Parameter Name="mEmail" Mode="In" Type="String" />
+            <Parameter Name="mPBox" Mode="In" Type="String" />
+            <Parameter Name="mFName" Mode="In" Type="String" />
+            <Parameter Name="mMName" Mode="In" Type="String" />
+            <Parameter Name="mGName" Mode="In" Type="String" />
+            <Parameter Name="mFIDNo" Mode="In" Type="String" />
+            <Parameter Name="mMIDNo" Mode="In" Type="String" />
+            <Parameter Name="mGIDNo" Mode="In" Type="String" />
+            <Parameter Name="mFContacts" Mode="In" Type="String" />
+            <Parameter Name="mMContacts" Mode="In" Type="String" />
+            <Parameter Name="mGContacts" Mode="In" Type="String" />
+            <Parameter Name="mFEmail" Mode="In" Type="String" />
+            <Parameter Name="mMEmail" Mode="In" Type="String" />
+            <Parameter Name="mGEmail" Mode="In" Type="String" />
+            <Parameter Name="mCounty" Mode="In" Type="String" />
+            <Parameter Name="mSCounty" Mode="In" Type="String" />
+            <Parameter Name="mUserName" Mode="In" Type="String" />
+            <Parameter Name="mIndex" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_Get_Categories_Result">
@@ -23003,6 +23147,15 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
           <Property Type="String" Name="Father_Email" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Mother_Email" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Guardian_Email" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="proc_Get_ClassGrades_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Class_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Level_Code" Nullable="false" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="proc_InsLearnerWithIndexNew_Result">
+          <Property Type="Boolean" Name="Success" Nullable="true" />
+          <Property Type="String" Name="GenUPI" Nullable="true" MaxLength="6" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -32004,6 +32157,24 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
                 <ScalarProperty Name="Father_Email" ColumnName="Father_Email" />
                 <ScalarProperty Name="Mother_Email" ColumnName="Mother_Email" />
                 <ScalarProperty Name="Guardian_Email" ColumnName="Guardian_Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_Get_ClassGrades" FunctionName="NEMISModel.Store.proc_Get_ClassGrades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEMISModel.proc_Get_ClassGrades_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Class_Name" ColumnName="Class_Name" />
+                <ScalarProperty Name="Level_Code" ColumnName="Level_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_InsLearnerWithIndex" FunctionName="NEMISModel.Store.proc_InsLearnerWithIndex" />
+          <FunctionImportMapping FunctionImportName="proc_InsLearnerWithIndexNew" FunctionName="NEMISModel.Store.proc_InsLearnerWithIndexNew">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEMISModel.proc_InsLearnerWithIndexNew_Result">
+                <ScalarProperty Name="Success" ColumnName="Success" />
+                <ScalarProperty Name="GenUPI" ColumnName="GenUPI" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -621,5 +621,280 @@ namespace WebMVC.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_LearnerRecord3_Result>("proc_Get_LearnerRecord3", mUPIParameter, mBCertParameter);
         }
+    
+        public virtual ObjectResult<proc_Get_ClassGrades_Result> proc_Get_ClassGrades(string mLevel)
+        {
+            var mLevelParameter = mLevel != null ?
+                new ObjectParameter("mLevel", mLevel) :
+                new ObjectParameter("mLevel", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_ClassGrades_Result>("proc_Get_ClassGrades", mLevelParameter);
+        }
+    
+        public virtual int proc_InsLearnerWithIndex(string uIC, string uPI, string surname, string otherNames, string firstName, string birth_Cert_No, string dOB, string gender, string nationality, string entry_AS, string class_Code, string disability, string medicalNeed, string mPhone, string mEmail, string mPBox, string mFName, string mMName, string mGName, string mFIDNo, string mMIDNo, string mGIDNo, string mFContacts, string mMContacts, string mGContacts, string mFEmail, string mMEmail, string mGEmail, string mCounty, string mSCounty, string mUserName, string mIndex, ObjectParameter mGenUPI)
+        {
+            var uICParameter = uIC != null ?
+                new ObjectParameter("UIC", uIC) :
+                new ObjectParameter("UIC", typeof(string));
+    
+            var uPIParameter = uPI != null ?
+                new ObjectParameter("UPI", uPI) :
+                new ObjectParameter("UPI", typeof(string));
+    
+            var surnameParameter = surname != null ?
+                new ObjectParameter("Surname", surname) :
+                new ObjectParameter("Surname", typeof(string));
+    
+            var otherNamesParameter = otherNames != null ?
+                new ObjectParameter("OtherNames", otherNames) :
+                new ObjectParameter("OtherNames", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var birth_Cert_NoParameter = birth_Cert_No != null ?
+                new ObjectParameter("Birth_Cert_No", birth_Cert_No) :
+                new ObjectParameter("Birth_Cert_No", typeof(string));
+    
+            var dOBParameter = dOB != null ?
+                new ObjectParameter("DOB", dOB) :
+                new ObjectParameter("DOB", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var nationalityParameter = nationality != null ?
+                new ObjectParameter("Nationality", nationality) :
+                new ObjectParameter("Nationality", typeof(string));
+    
+            var entry_ASParameter = entry_AS != null ?
+                new ObjectParameter("Entry_AS", entry_AS) :
+                new ObjectParameter("Entry_AS", typeof(string));
+    
+            var class_CodeParameter = class_Code != null ?
+                new ObjectParameter("Class_Code", class_Code) :
+                new ObjectParameter("Class_Code", typeof(string));
+    
+            var disabilityParameter = disability != null ?
+                new ObjectParameter("Disability", disability) :
+                new ObjectParameter("Disability", typeof(string));
+    
+            var medicalNeedParameter = medicalNeed != null ?
+                new ObjectParameter("MedicalNeed", medicalNeed) :
+                new ObjectParameter("MedicalNeed", typeof(string));
+    
+            var mPhoneParameter = mPhone != null ?
+                new ObjectParameter("mPhone", mPhone) :
+                new ObjectParameter("mPhone", typeof(string));
+    
+            var mEmailParameter = mEmail != null ?
+                new ObjectParameter("mEmail", mEmail) :
+                new ObjectParameter("mEmail", typeof(string));
+    
+            var mPBoxParameter = mPBox != null ?
+                new ObjectParameter("mPBox", mPBox) :
+                new ObjectParameter("mPBox", typeof(string));
+    
+            var mFNameParameter = mFName != null ?
+                new ObjectParameter("mFName", mFName) :
+                new ObjectParameter("mFName", typeof(string));
+    
+            var mMNameParameter = mMName != null ?
+                new ObjectParameter("mMName", mMName) :
+                new ObjectParameter("mMName", typeof(string));
+    
+            var mGNameParameter = mGName != null ?
+                new ObjectParameter("mGName", mGName) :
+                new ObjectParameter("mGName", typeof(string));
+    
+            var mFIDNoParameter = mFIDNo != null ?
+                new ObjectParameter("mFIDNo", mFIDNo) :
+                new ObjectParameter("mFIDNo", typeof(string));
+    
+            var mMIDNoParameter = mMIDNo != null ?
+                new ObjectParameter("mMIDNo", mMIDNo) :
+                new ObjectParameter("mMIDNo", typeof(string));
+    
+            var mGIDNoParameter = mGIDNo != null ?
+                new ObjectParameter("mGIDNo", mGIDNo) :
+                new ObjectParameter("mGIDNo", typeof(string));
+    
+            var mFContactsParameter = mFContacts != null ?
+                new ObjectParameter("mFContacts", mFContacts) :
+                new ObjectParameter("mFContacts", typeof(string));
+    
+            var mMContactsParameter = mMContacts != null ?
+                new ObjectParameter("mMContacts", mMContacts) :
+                new ObjectParameter("mMContacts", typeof(string));
+    
+            var mGContactsParameter = mGContacts != null ?
+                new ObjectParameter("mGContacts", mGContacts) :
+                new ObjectParameter("mGContacts", typeof(string));
+    
+            var mFEmailParameter = mFEmail != null ?
+                new ObjectParameter("mFEmail", mFEmail) :
+                new ObjectParameter("mFEmail", typeof(string));
+    
+            var mMEmailParameter = mMEmail != null ?
+                new ObjectParameter("mMEmail", mMEmail) :
+                new ObjectParameter("mMEmail", typeof(string));
+    
+            var mGEmailParameter = mGEmail != null ?
+                new ObjectParameter("mGEmail", mGEmail) :
+                new ObjectParameter("mGEmail", typeof(string));
+    
+            var mCountyParameter = mCounty != null ?
+                new ObjectParameter("mCounty", mCounty) :
+                new ObjectParameter("mCounty", typeof(string));
+    
+            var mSCountyParameter = mSCounty != null ?
+                new ObjectParameter("mSCounty", mSCounty) :
+                new ObjectParameter("mSCounty", typeof(string));
+    
+            var mUserNameParameter = mUserName != null ?
+                new ObjectParameter("mUserName", mUserName) :
+                new ObjectParameter("mUserName", typeof(string));
+    
+            var mIndexParameter = mIndex != null ?
+                new ObjectParameter("mIndex", mIndex) :
+                new ObjectParameter("mIndex", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsLearnerWithIndex", uICParameter, uPIParameter, surnameParameter, otherNamesParameter, firstNameParameter, birth_Cert_NoParameter, dOBParameter, genderParameter, nationalityParameter, entry_ASParameter, class_CodeParameter, disabilityParameter, medicalNeedParameter, mPhoneParameter, mEmailParameter, mPBoxParameter, mFNameParameter, mMNameParameter, mGNameParameter, mFIDNoParameter, mMIDNoParameter, mGIDNoParameter, mFContactsParameter, mMContactsParameter, mGContactsParameter, mFEmailParameter, mMEmailParameter, mGEmailParameter, mCountyParameter, mSCountyParameter, mUserNameParameter, mIndexParameter, mGenUPI);
+        }
+    
+        public virtual ObjectResult<proc_InsLearnerWithIndexNew_Result> proc_InsLearnerWithIndexNew(string uIC, string uPI, string surname, string otherNames, string firstName, string birth_Cert_No, string dOB, string gender, string nationality, string entry_AS, string class_Code, string disability, string medicalNeed, string mPhone, string mEmail, string mPBox, string mFName, string mMName, string mGName, string mFIDNo, string mMIDNo, string mGIDNo, string mFContacts, string mMContacts, string mGContacts, string mFEmail, string mMEmail, string mGEmail, string mCounty, string mSCounty, string mUserName, string mIndex)
+        {
+            var uICParameter = uIC != null ?
+                new ObjectParameter("UIC", uIC) :
+                new ObjectParameter("UIC", typeof(string));
+    
+            var uPIParameter = uPI != null ?
+                new ObjectParameter("UPI", uPI) :
+                new ObjectParameter("UPI", typeof(string));
+    
+            var surnameParameter = surname != null ?
+                new ObjectParameter("Surname", surname) :
+                new ObjectParameter("Surname", typeof(string));
+    
+            var otherNamesParameter = otherNames != null ?
+                new ObjectParameter("OtherNames", otherNames) :
+                new ObjectParameter("OtherNames", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var birth_Cert_NoParameter = birth_Cert_No != null ?
+                new ObjectParameter("Birth_Cert_No", birth_Cert_No) :
+                new ObjectParameter("Birth_Cert_No", typeof(string));
+    
+            var dOBParameter = dOB != null ?
+                new ObjectParameter("DOB", dOB) :
+                new ObjectParameter("DOB", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var nationalityParameter = nationality != null ?
+                new ObjectParameter("Nationality", nationality) :
+                new ObjectParameter("Nationality", typeof(string));
+    
+            var entry_ASParameter = entry_AS != null ?
+                new ObjectParameter("Entry_AS", entry_AS) :
+                new ObjectParameter("Entry_AS", typeof(string));
+    
+            var class_CodeParameter = class_Code != null ?
+                new ObjectParameter("Class_Code", class_Code) :
+                new ObjectParameter("Class_Code", typeof(string));
+    
+            var disabilityParameter = disability != null ?
+                new ObjectParameter("Disability", disability) :
+                new ObjectParameter("Disability", typeof(string));
+    
+            var medicalNeedParameter = medicalNeed != null ?
+                new ObjectParameter("MedicalNeed", medicalNeed) :
+                new ObjectParameter("MedicalNeed", typeof(string));
+    
+            var mPhoneParameter = mPhone != null ?
+                new ObjectParameter("mPhone", mPhone) :
+                new ObjectParameter("mPhone", typeof(string));
+    
+            var mEmailParameter = mEmail != null ?
+                new ObjectParameter("mEmail", mEmail) :
+                new ObjectParameter("mEmail", typeof(string));
+    
+            var mPBoxParameter = mPBox != null ?
+                new ObjectParameter("mPBox", mPBox) :
+                new ObjectParameter("mPBox", typeof(string));
+    
+            var mFNameParameter = mFName != null ?
+                new ObjectParameter("mFName", mFName) :
+                new ObjectParameter("mFName", typeof(string));
+    
+            var mMNameParameter = mMName != null ?
+                new ObjectParameter("mMName", mMName) :
+                new ObjectParameter("mMName", typeof(string));
+    
+            var mGNameParameter = mGName != null ?
+                new ObjectParameter("mGName", mGName) :
+                new ObjectParameter("mGName", typeof(string));
+    
+            var mFIDNoParameter = mFIDNo != null ?
+                new ObjectParameter("mFIDNo", mFIDNo) :
+                new ObjectParameter("mFIDNo", typeof(string));
+    
+            var mMIDNoParameter = mMIDNo != null ?
+                new ObjectParameter("mMIDNo", mMIDNo) :
+                new ObjectParameter("mMIDNo", typeof(string));
+    
+            var mGIDNoParameter = mGIDNo != null ?
+                new ObjectParameter("mGIDNo", mGIDNo) :
+                new ObjectParameter("mGIDNo", typeof(string));
+    
+            var mFContactsParameter = mFContacts != null ?
+                new ObjectParameter("mFContacts", mFContacts) :
+                new ObjectParameter("mFContacts", typeof(string));
+    
+            var mMContactsParameter = mMContacts != null ?
+                new ObjectParameter("mMContacts", mMContacts) :
+                new ObjectParameter("mMContacts", typeof(string));
+    
+            var mGContactsParameter = mGContacts != null ?
+                new ObjectParameter("mGContacts", mGContacts) :
+                new ObjectParameter("mGContacts", typeof(string));
+    
+            var mFEmailParameter = mFEmail != null ?
+                new ObjectParameter("mFEmail", mFEmail) :
+                new ObjectParameter("mFEmail", typeof(string));
+    
+            var mMEmailParameter = mMEmail != null ?
+                new ObjectParameter("mMEmail", mMEmail) :
+                new ObjectParameter("mMEmail", typeof(string));
+    
+            var mGEmailParameter = mGEmail != null ?
+                new ObjectParameter("mGEmail", mGEmail) :
+                new ObjectParameter("mGEmail", typeof(string));
+    
+            var mCountyParameter = mCounty != null ?
+                new ObjectParameter("mCounty", mCounty) :
+                new ObjectParameter("mCounty", typeof(string));
+    
+            var mSCountyParameter = mSCounty != null ?
+                new ObjectParameter("mSCounty", mSCounty) :
+                new ObjectParameter("mSCounty", typeof(string));
+    
+            var mUserNameParameter = mUserName != null ?
+                new ObjectParameter("mUserName", mUserName) :
+                new ObjectParameter("mUserName", typeof(string));
+    
+            var mIndexParameter = mIndex != null ?
+                new ObjectParameter("mIndex", mIndex) :
+                new ObjectParameter("mIndex", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_InsLearnerWithIndexNew_Result>("proc_InsLearnerWithIndexNew", uICParameter, uPIParameter, surnameParameter, otherNamesParameter, firstNameParameter, birth_Cert_NoParameter, dOBParameter, genderParameter, nationalityParameter, entry_ASParameter, class_CodeParameter, disabilityParameter, medicalNeedParameter, mPhoneParameter, mEmailParameter, mPBoxParameter, mFNameParameter, mMNameParameter, mGNameParameter, mFIDNoParameter, mMIDNoParameter, mGIDNoParameter, mFContactsParameter, mMContactsParameter, mGContactsParameter, mFEmailParameter, mMEmailParameter, mGEmailParameter, mCountyParameter, mSCountyParameter, mUserNameParameter, mIndexParameter);
+        }
     }
 }

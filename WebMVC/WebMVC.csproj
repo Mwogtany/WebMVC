@@ -1184,6 +1184,9 @@
     <Compile Include="Models\proc_Get_ClassGrades2_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\proc_Get_ClassGrades_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\proc_Get_InstTypes3_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
@@ -1212,6 +1215,9 @@
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proc_Get_Summary_Staff_Per_Level_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_InsLearnerWithIndexNew_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PROGRAMME.cs">
@@ -1565,6 +1571,8 @@
     <Content Include="Scripts\AdminData.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -1584,6 +1592,7 @@
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\canvasjs.min.js" />
+    <Content Include="Scripts\CascadeControls.js" />
     <Content Include="Scripts\Chart.bundle.min.js" />
     <Content Include="Scripts\c_config.js" />
     <Content Include="Scripts\c_menu.js" />

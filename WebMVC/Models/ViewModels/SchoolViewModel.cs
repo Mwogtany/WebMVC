@@ -12,6 +12,9 @@ namespace WebMVC.Models
         [Required]
         [Display(Name = "Learner UPI")]
         public string UPI { get; set; }
+        public string Surname { get; set; }
+        public string FirstName { get; set; }
+        public string OtherNames { get; set; }
         [Display(Name = "Learner Name")]
         public string Names { get; set; }
         public string Institution_Name { get; set; }
@@ -43,6 +46,7 @@ namespace WebMVC.Models
         public string Disability_Name2 { get; set; }
         public string Class_Name { get; set; }
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string DOB { get; set; }
         public Nullable<int> IsDateDOB { get; set; }
         [Display(Name = "Birth Cert No")]
