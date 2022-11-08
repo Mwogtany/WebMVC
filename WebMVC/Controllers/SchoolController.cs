@@ -236,8 +236,15 @@ namespace WebMVC.Controllers
                 if (mResultSet != null)
                 {
                     var mUPI = mResultSet.First().GenUPI.ToString();
-                    mymodel.UPI = mUPI;
-                    ViewBag.Message = "Record Successfully Saved!!! = " + mUPI;
+                    if (mUPI == "100001")
+                    {
+                        ViewBag.Message2 = "Record NOT Successed Saved!!! Check Birth Certificate Details and Resubmit!!!";
+                    }
+                    else
+                    {
+                        mymodel.UPI = mUPI;
+                        ViewBag.Message = "Record Successfully Saved!!! = " + mUPI;
+                    }
                 }
                 else
                 {
@@ -331,6 +338,125 @@ namespace WebMVC.Controllers
             }
 
             return View("EditLearner", mymodel);
+        }
+
+        public ActionResult MoveLearner(string id)
+        {
+            NEMISEntities Db = new NEMISEntities();
+            var mtransfer = new MoveLearnerViewModel();
+
+            List<SelectListItem> aGradeList = new List<SelectListItem>();
+            
+            var mylearner = (from p in Db.proc_Get_Learner(id)
+                             select p).SingleOrDefault();
+            
+            var mlevel = Session["LEVELCODE"].ToString();
+            var minst = Session["Institution_Code"].ToString();
+            var mgrd = (from p in Db.proc_Get_ClassGrades(mlevel)
+                        select p).ToList();
+            mgrd.ForEach(x =>
+            {
+                aGradeList.Add(new SelectListItem { Text = x.Class_Name, Value = x.Class_Code.ToString() });
+            });
+            
+            ViewBag.ClassList = aGradeList;
+            mtransfer.ALearnerViewModel = mylearner;
+            mtransfer.OriginalGrade = mylearner.Class_Code;
+            mtransfer.UPI = id;
+            return View(mtransfer);
+        }
+        [HttpPost]
+        public ActionResult MoveLearner(MoveLearnerViewModel mycase)
+        {
+            var mtransfer = new MoveLearnerViewModel();
+
+            List<SelectListItem> aGradeList = new List<SelectListItem>();
+            string id = mycase.UPI;
+            if (!ModelState.IsValid)
+                return View();
+            if (Session["user"] == null)
+            {
+                this.RedirectToAction("LogOff", "Account");
+            }
+            var mUser = (string)Session["user"];
+            mycase.DateEffected = DateTime.Now;
+
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+
+                Db.LEARNER_TRANSFER_GRADE.Add(new LEARNER_TRANSFER_GRADE()
+                {
+                    UPI = mycase.UPI,
+                    Category = "1",
+                    OriginalGrade = mycase.OriginalGrade,
+                    NewGrade = mycase.NewGrade,
+                    DateEffected = mycase.DateEffected
+                });
+
+                try
+                {
+                    // Your code...
+                    // Could also be before try if you know the exception occurs in SaveChanges
+                    Db.SaveChanges();
+                    ViewBag.Message = "Learner Moved Successfully Saved!!!";
+                    return RedirectToAction("MyLearners");
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
+                }
+
+                var mylearner = (from p in Db.proc_Get_Learner(id)
+                                 select p).SingleOrDefault();
+
+                var mlevel = Session["LEVELCODE"].ToString();
+                var minst = Session["Institution_Code"].ToString();
+                var mgrd = (from p in Db.proc_Get_ClassGrades(mlevel)
+                            select p).ToList();
+                mgrd.ForEach(x =>
+                {
+                    aGradeList.Add(new SelectListItem { Text = x.Class_Name, Value = x.Class_Code.ToString() });
+                });
+
+                ViewBag.ClassList = aGradeList;
+                mtransfer.ALearnerViewModel = mylearner;
+                mtransfer.OriginalGrade = mylearner.Class_Code;
+                mtransfer.UPI = id;
+                return View(mtransfer);
+            }
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult DeleteLearner(string id)
+        {
+            //update database
+            if (Session["user"] == null)
+            {
+                this.RedirectToAction("LogOff", "Account");
+            }
+            var mUser = (string)Session["user"];
+            var minst = Session["Institution_Code"].ToString();
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var alearner = Db.proc_Get_Learner(id).FirstOrDefault();
+                Db.proc_DeleteLearner(id, mUser, minst);
+                Db.SaveChanges();
+                ViewBag.Message = "Record Successfully Deleted!!!";
+
+                return Json(alearner);
+            }
+
+            return new EmptyResult();
         }
     }
 }

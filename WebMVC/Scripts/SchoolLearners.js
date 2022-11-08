@@ -20,6 +20,7 @@
     {
         GetLearners(origin + "/api/School/TmpLearners/" + mUIC + "/" + mGrade);
     }
+    var str = "";
     function GetLearners(murl) {
         $.ajax({
             url: murl,
@@ -58,9 +59,10 @@
                             value.Phone_Number + '</td>';
                         txt1 += '<td style="text-align:left;">' +
                             value.NHIF_No + '</td>';
+                        str = "&#39;" + value.UPI + "&#39;";
                         txt1 += '<td style="text-align:left;">' +
                             '<a href="/School/EditLearner/' + value.UPI + '">View</a>  |' +
-                            '<a href="/School/DeleteLearner/' + value.UPI + '">Delete</a>  |' +
+                            '<a href="#" onclick="deleteSession(' + str + ')" id="btnDelete" data-target="#deleteModal" title="Delete"><span class="glyphicon glyphicon-trash"></span></a>  |' +
                             '<a href="/School/MoveLearner/' + value.UPI + '">Move</a>' + '</td>';
                         txt1 += '</tr>';
                     });

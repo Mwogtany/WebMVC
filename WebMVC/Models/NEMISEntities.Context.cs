@@ -896,5 +896,22 @@ namespace WebMVC.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_InsLearnerWithIndexNew_Result>("proc_InsLearnerWithIndexNew", uICParameter, uPIParameter, surnameParameter, otherNamesParameter, firstNameParameter, birth_Cert_NoParameter, dOBParameter, genderParameter, nationalityParameter, entry_ASParameter, class_CodeParameter, disabilityParameter, medicalNeedParameter, mPhoneParameter, mEmailParameter, mPBoxParameter, mFNameParameter, mMNameParameter, mGNameParameter, mFIDNoParameter, mMIDNoParameter, mGIDNoParameter, mFContactsParameter, mMContactsParameter, mGContactsParameter, mFEmailParameter, mMEmailParameter, mGEmailParameter, mCountyParameter, mSCountyParameter, mUserNameParameter, mIndexParameter);
         }
+    
+        public virtual int proc_DeleteLearner(string uPI, string captured_By, string institution_Code)
+        {
+            var uPIParameter = uPI != null ?
+                new ObjectParameter("UPI", uPI) :
+                new ObjectParameter("UPI", typeof(string));
+    
+            var captured_ByParameter = captured_By != null ?
+                new ObjectParameter("Captured_By", captured_By) :
+                new ObjectParameter("Captured_By", typeof(string));
+    
+            var institution_CodeParameter = institution_Code != null ?
+                new ObjectParameter("Institution_Code", institution_Code) :
+                new ObjectParameter("Institution_Code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_DeleteLearner", uPIParameter, captured_ByParameter, institution_CodeParameter);
+        }
     }
 }

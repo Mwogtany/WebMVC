@@ -1571,6 +1571,8 @@
     <Content Include="Scripts\AdminData.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootbox.all.js" />
+    <Content Include="Scripts\bootbox.all.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1683,6 +1685,7 @@
     <Content Include="Views\School\MyLearners.cshtml" />
     <Content Include="Views\Shared\images\v_arrow.gi" />
     <Content Include="Views\School\EditLearner.cshtml" />
+    <Content Include="Views\School\MoveLearner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

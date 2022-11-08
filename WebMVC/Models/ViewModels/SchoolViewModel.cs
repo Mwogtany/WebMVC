@@ -74,4 +74,19 @@ namespace WebMVC.Models
 
         public IEnumerable<LearnerViewModel> LearnerViewModelList { get; set; }
     }
+
+    public class MoveLearnerViewModel
+    {
+        public string UPI { get; set; }
+        public string Category { get; set; }
+        [Display(Name = "Current Grade")]
+        public string OriginalGrade { get; set; }
+        [Display(Name = "New Grade to Move")]
+        public string NewGrade { get; set; }
+        public Nullable<System.DateTime> DateEffected { get; set; }
+
+        public IList<SelectListItem> GradeList { get; set; }
+
+        public proc_Get_Learner_Result ALearnerViewModel { get; set; }
+    }
 }

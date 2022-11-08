@@ -10,8 +10,7 @@
 namespace WebMVC.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class proc_Get_Learner_Result
     {
         public string UPI { get; set; }
@@ -50,7 +49,6 @@ namespace WebMVC.Models
         public string Disability_Name { get; set; }
         public string Class_Name { get; set; }
         public string DOB { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string DOB2 { get; set; }
         public Nullable<int> IsDateDOB { get; set; }
         public string Birth_Cert_No { get; set; }

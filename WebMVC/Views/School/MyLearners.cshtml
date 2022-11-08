@@ -5,7 +5,8 @@
     var learners = Model.LearnerViewModelList;
     var i = 1;
 }
-
+<script src="~/Scripts/bootbox.all.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/SchoolLearners.js"></script>
 <h2>LEARNERS LISTING</h2>
 <div class="row">
@@ -35,6 +36,19 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+    @if (ViewBag.Message != "")
+    {
+        <p>
+            <div class="text-success">@ViewBag.Message</div>
+        </p>}
+    @if (ViewBag.Message2 != "")
+    {
+        <p>
+            <div class="text-fail">@ViewBag.Message2</div>
+        </p>
+    }
 </div>
 <div class="row">
 
@@ -131,4 +145,25 @@
         }
     </table>
 </div>
+<script type="text/javascript" language="javascript">
+        function deleteSession(id) {
+            bootbox.confirm("Are you sure you want to delete UPI " + id + "?", function (result) {
+                $.ajax({
+                    url: "@Url.Action("DeleteLearner", "School")",
+                    type: 'POST',
+                    data: JSON.stringify({ id: id }), //small letter id, same as in controller parameter
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (customer) {
+                        if (customer != null) {
+                            window.location.href = '/School/MyLearners'
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        }
+</script>
 
