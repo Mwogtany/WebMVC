@@ -8941,6 +8941,10 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
           <Property Name="Institution_Type" Type="nvarchar" MaxLength="17" />
           <Property Name="Class_Name" Type="nvarchar" MaxLength="40" />
         </EntityType>
+        <Function Name="proc_DeleteInstitution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Institution_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Captured_By" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="proc_DeleteLearner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UPI" Type="nvarchar" Mode="In" />
           <Parameter Name="Captured_By" Type="nvarchar" Mode="In" />
@@ -8954,6 +8958,15 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
           <Parameter Name="mInst" Type="nvarchar" Mode="In" />
           <Parameter Name="mLevel" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="proc_Get_Institution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mInst" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Get_Institutions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mSCounty" Type="nvarchar" Mode="In" />
+          <Parameter Name="mLevel" Type="nvarchar" Mode="In" />
+          <Parameter Name="mType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Get_InstLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_Get_InstTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_Get_InstTypes3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_Get_Learner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -22761,6 +22774,19 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
             <Parameter Name="Captured_By" Mode="In" Type="String" />
             <Parameter Name="Institution_Code" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="proc_Get_Institutions" ReturnType="Collection(NEMISModel.proc_Get_Institutions_Result)">
+            <Parameter Name="mSCounty" Mode="In" Type="String" />
+            <Parameter Name="mLevel" Mode="In" Type="String" />
+            <Parameter Name="mType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Get_InstLevel" ReturnType="Collection(NEMISModel.proc_Get_InstLevel_Result)" />
+          <FunctionImport Name="proc_DeleteInstitution">
+            <Parameter Name="Institution_Code" Mode="In" Type="String" />
+            <Parameter Name="Captured_By" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Get_Institution" ReturnType="Collection(NEMISModel.proc_Get_Institution_Result)">
+            <Parameter Name="mInst" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_Get_Categories_Result">
           <Property Type="String" Name="CatID" Nullable="false" MaxLength="1" />
@@ -23166,6 +23192,167 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
         <ComplexType Name="proc_InsLearnerWithIndexNew_Result">
           <Property Type="Boolean" Name="Success" Nullable="true" />
           <Property Type="String" Name="GenUPI" Nullable="true" MaxLength="6" />
+        </ComplexType>
+        <ComplexType Name="proc_Get_Institutions_Result">
+          <Property Type="String" Name="Institution_Code" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Institution_Current_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Institution_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Institution_Status" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Status_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Institution_Type" Nullable="true" MaxLength="17" />
+          <Property Type="String" Name="Institution_Cat_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Institution_Category_Code" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Institution_Level_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Level_Name" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Institution_Cluster" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Cluster_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="School_Gender_Name" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Classification_by_Gender" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Accommodation_Code" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Accommodation_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Mobile_Institution" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Mobility_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Formal_Status" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Formality_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Institution_Residence" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Residence" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Sub_County_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Sub_County_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Constituency_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Constituency_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zone_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zone_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ward_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ward_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Latitude" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Longitude" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Postal_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tel_Number" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Tel_Number2" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Email_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile_Number1" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Mobile_Number2" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ownership_Document" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Document_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Premise_Ownership" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Social_Media" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Educationa_System_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Education_System_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Registration_Date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Proprietor_Code" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Proprietor_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Nearest_Police_Station" Nullable="true" MaxLength="130" />
+          <Property Type="String" Name="Registration_Certificate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nearest_Health_Facility" Nullable="true" MaxLength="130" />
+          <Property Type="String" Name="Nearest_Town" Nullable="true" MaxLength="130" />
+          <Property Type="String" Name="Captured_By" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="Date_Captured" Nullable="true" />
+          <Property Type="String" Name="Employer_pin" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ownershipdocuments" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Incorporationdocument" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InstitutionRegDocument" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tsc_Code" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Knec_Code" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Sponsor_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Institution_Sponsor" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="County_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="County_Name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="BC_Total" Nullable="false" />
+          <Property Type="Int32" Name="WBC_Total" Nullable="false" />
+          <Property Type="Int32" Name="Learners" Nullable="true" />
+          <Property Type="Int32" Name="TSC_Total" Nullable="false" />
+          <Property Type="Int32" Name="BOM_Total" Nullable="false" />
+          <Property Type="Int32" Name="Staff" Nullable="true" />
+          <Property Type="String" Name="EffectiveName" Nullable="true" MaxLength="334" />
+          <Property Type="String" Name="StudSel" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="StudAdm" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="BankAccs" Nullable="true" />
+          <Property Type="Boolean" Name="fse" Nullable="true" />
+          <Property Type="String" Name="FSEStatus" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="CovidStatus" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="DHIS" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="HeadsName" Nullable="false" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="proc_Get_InstLevel_Result">
+          <Property Type="String" Name="Level_Code" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Level_Name" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="proc_Get_Institution_Result">
+          <Property Type="String" Name="Institution_Code" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Institution_Current_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Institution_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Institution_Status" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Status_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Institution_Type" Nullable="true" MaxLength="17" />
+          <Property Type="String" Name="Institution_Cat_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Institution_Category_Code" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Institution_Level_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Level_Name" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Institution_Cluster" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Cluster_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="School_Gender_Name" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Classification_by_Gender" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Accommodation_Code" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Accommodation_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Mobile_Institution" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Mobility_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Formal_Status" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Formality_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Institution_Residence" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Residence" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Sub_County_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Sub_County_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Constituency_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Constituency_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zone_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zone_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ward_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ward_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Latitude" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Longitude" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Postal_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tel_Number" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Tel_Number2" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Email_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile_Number1" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Mobile_Number2" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ownership_Document" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Document_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Premise_Ownership" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Social_Media" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Educationa_System_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Education_System_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Registration_Date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Proprietor_Code" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Proprietor_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Nearest_Police_Station" Nullable="true" MaxLength="130" />
+          <Property Type="String" Name="Registration_Certificate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nearest_Health_Facility" Nullable="true" MaxLength="130" />
+          <Property Type="String" Name="Nearest_Town" Nullable="true" MaxLength="130" />
+          <Property Type="String" Name="Captured_By" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="Date_Captured" Nullable="true" />
+          <Property Type="String" Name="Employer_pin" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ownershipdocuments" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Incorporationdocument" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InstitutionRegDocument" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tsc_Code" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Knec_Code" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Sponsor_Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Institution_Sponsor" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="County_Code" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="County_Name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="BC_Total" Nullable="false" />
+          <Property Type="Int32" Name="WBC_Total" Nullable="false" />
+          <Property Type="Int32" Name="Learners" Nullable="true" />
+          <Property Type="Int32" Name="TSC_Total" Nullable="false" />
+          <Property Type="Int32" Name="BOM_Total" Nullable="false" />
+          <Property Type="Int32" Name="Staff" Nullable="true" />
+          <Property Type="String" Name="EffectiveName" Nullable="true" MaxLength="334" />
+          <Property Type="Int32" Name="StudSel" Nullable="true" />
+          <Property Type="Int32" Name="BankAccs" Nullable="true" />
+          <Property Type="String" Name="CompletedNessRegions" Nullable="true" MaxLength="233" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -32189,6 +32376,180 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_DeleteLearner" FunctionName="NEMISModel.Store.proc_DeleteLearner" />
+          <FunctionImportMapping FunctionImportName="proc_Get_Institutions" FunctionName="NEMISModel.Store.proc_Get_Institutions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEMISModel.proc_Get_Institutions_Result">
+                <ScalarProperty Name="Institution_Code" ColumnName="Institution_Code" />
+                <ScalarProperty Name="Institution_Current_Code" ColumnName="Institution_Current_Code" />
+                <ScalarProperty Name="Institution_Name" ColumnName="Institution_Name" />
+                <ScalarProperty Name="Institution_Status" ColumnName="Institution_Status" />
+                <ScalarProperty Name="Status_Name" ColumnName="Status_Name" />
+                <ScalarProperty Name="Institution_Type" ColumnName="Institution_Type" />
+                <ScalarProperty Name="Institution_Cat_Name" ColumnName="Institution_Cat_Name" />
+                <ScalarProperty Name="Institution_Category_Code" ColumnName="Institution_Category_Code" />
+                <ScalarProperty Name="Institution_Level_Code" ColumnName="Institution_Level_Code" />
+                <ScalarProperty Name="Level_Name" ColumnName="Level_Name" />
+                <ScalarProperty Name="Institution_Cluster" ColumnName="Institution_Cluster" />
+                <ScalarProperty Name="Cluster_Name" ColumnName="Cluster_Name" />
+                <ScalarProperty Name="School_Gender_Name" ColumnName="School_Gender_Name" />
+                <ScalarProperty Name="Classification_by_Gender" ColumnName="Classification_by_Gender" />
+                <ScalarProperty Name="Accommodation_Code" ColumnName="Accommodation_Code" />
+                <ScalarProperty Name="Accommodation_Name" ColumnName="Accommodation_Name" />
+                <ScalarProperty Name="Mobile_Institution" ColumnName="Mobile_Institution" />
+                <ScalarProperty Name="Mobility_Name" ColumnName="Mobility_Name" />
+                <ScalarProperty Name="Formal_Status" ColumnName="Formal_Status" />
+                <ScalarProperty Name="Formality_Name" ColumnName="Formality_Name" />
+                <ScalarProperty Name="Institution_Residence" ColumnName="Institution_Residence" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+                <ScalarProperty Name="Sub_County_Code" ColumnName="Sub_County_Code" />
+                <ScalarProperty Name="Sub_County_Name" ColumnName="Sub_County_Name" />
+                <ScalarProperty Name="Constituency_Code" ColumnName="Constituency_Code" />
+                <ScalarProperty Name="Constituency_Name" ColumnName="Constituency_Name" />
+                <ScalarProperty Name="Zone_Code" ColumnName="Zone_Code" />
+                <ScalarProperty Name="Zone_Name" ColumnName="Zone_Name" />
+                <ScalarProperty Name="Ward_Name" ColumnName="Ward_Name" />
+                <ScalarProperty Name="Ward_Code" ColumnName="Ward_Code" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Postal_Address" ColumnName="Postal_Address" />
+                <ScalarProperty Name="Tel_Number" ColumnName="Tel_Number" />
+                <ScalarProperty Name="Tel_Number2" ColumnName="Tel_Number2" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Mobile_Number1" ColumnName="Mobile_Number1" />
+                <ScalarProperty Name="Mobile_Number2" ColumnName="Mobile_Number2" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Ownership_Document" ColumnName="Ownership_Document" />
+                <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
+                <ScalarProperty Name="Premise_Ownership" ColumnName="Premise_Ownership" />
+                <ScalarProperty Name="Social_Media" ColumnName="Social_Media" />
+                <ScalarProperty Name="Educationa_System_Name" ColumnName="Educationa_System_Name" />
+                <ScalarProperty Name="Education_System_Code" ColumnName="Education_System_Code" />
+                <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+                <ScalarProperty Name="Proprietor_Code" ColumnName="Proprietor_Code" />
+                <ScalarProperty Name="Proprietor_Name" ColumnName="Proprietor_Name" />
+                <ScalarProperty Name="Nearest_Police_Station" ColumnName="Nearest_Police_Station" />
+                <ScalarProperty Name="Registration_Certificate" ColumnName="Registration_Certificate" />
+                <ScalarProperty Name="Nearest_Health_Facility" ColumnName="Nearest_Health_Facility" />
+                <ScalarProperty Name="Nearest_Town" ColumnName="Nearest_Town" />
+                <ScalarProperty Name="Captured_By" ColumnName="Captured_By" />
+                <ScalarProperty Name="Date_Captured" ColumnName="Date_Captured" />
+                <ScalarProperty Name="Employer_pin" ColumnName="Employer_pin" />
+                <ScalarProperty Name="Ownershipdocuments" ColumnName="Ownershipdocuments" />
+                <ScalarProperty Name="Incorporationdocument" ColumnName="Incorporationdocument" />
+                <ScalarProperty Name="InstitutionRegDocument" ColumnName="InstitutionRegDocument" />
+                <ScalarProperty Name="Tsc_Code" ColumnName="Tsc_Code" />
+                <ScalarProperty Name="Knec_Code" ColumnName="Knec_Code" />
+                <ScalarProperty Name="Sponsor_Name" ColumnName="Sponsor_Name" />
+                <ScalarProperty Name="Institution_Sponsor" ColumnName="Institution_Sponsor" />
+                <ScalarProperty Name="County_Code" ColumnName="County_Code" />
+                <ScalarProperty Name="County_Name" ColumnName="County_Name" />
+                <ScalarProperty Name="BC_Total" ColumnName="BC_Total" />
+                <ScalarProperty Name="WBC_Total" ColumnName="WBC_Total" />
+                <ScalarProperty Name="Learners" ColumnName="Learners" />
+                <ScalarProperty Name="TSC_Total" ColumnName="TSC_Total" />
+                <ScalarProperty Name="BOM_Total" ColumnName="BOM_Total" />
+                <ScalarProperty Name="Staff" ColumnName="Staff" />
+                <ScalarProperty Name="EffectiveName" ColumnName="EffectiveName" />
+                <ScalarProperty Name="StudSel" ColumnName="StudSel" />
+                <ScalarProperty Name="StudAdm" ColumnName="StudAdm" />
+                <ScalarProperty Name="BankAccs" ColumnName="BankAccs" />
+                <ScalarProperty Name="fse" ColumnName="fse" />
+                <ScalarProperty Name="FSEStatus" ColumnName="FSEStatus" />
+                <ScalarProperty Name="CovidStatus" ColumnName="CovidStatus" />
+                <ScalarProperty Name="DHIS" ColumnName="DHIS" />
+                <ScalarProperty Name="HeadsName" ColumnName="HeadsName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_Get_InstLevel" FunctionName="NEMISModel.Store.proc_Get_InstLevel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEMISModel.proc_Get_InstLevel_Result">
+                <ScalarProperty Name="Level_Code" ColumnName="Level_Code" />
+                <ScalarProperty Name="Level_Name" ColumnName="Level_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_DeleteInstitution" FunctionName="NEMISModel.Store.proc_DeleteInstitution" />
+          <FunctionImportMapping FunctionImportName="proc_Get_Institution" FunctionName="NEMISModel.Store.proc_Get_Institution">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEMISModel.proc_Get_Institution_Result">
+                <ScalarProperty Name="Institution_Code" ColumnName="Institution_Code" />
+                <ScalarProperty Name="Institution_Current_Code" ColumnName="Institution_Current_Code" />
+                <ScalarProperty Name="Institution_Name" ColumnName="Institution_Name" />
+                <ScalarProperty Name="Institution_Status" ColumnName="Institution_Status" />
+                <ScalarProperty Name="Status_Name" ColumnName="Status_Name" />
+                <ScalarProperty Name="Institution_Type" ColumnName="Institution_Type" />
+                <ScalarProperty Name="Institution_Cat_Name" ColumnName="Institution_Cat_Name" />
+                <ScalarProperty Name="Institution_Category_Code" ColumnName="Institution_Category_Code" />
+                <ScalarProperty Name="Institution_Level_Code" ColumnName="Institution_Level_Code" />
+                <ScalarProperty Name="Level_Name" ColumnName="Level_Name" />
+                <ScalarProperty Name="Institution_Cluster" ColumnName="Institution_Cluster" />
+                <ScalarProperty Name="Cluster_Name" ColumnName="Cluster_Name" />
+                <ScalarProperty Name="School_Gender_Name" ColumnName="School_Gender_Name" />
+                <ScalarProperty Name="Classification_by_Gender" ColumnName="Classification_by_Gender" />
+                <ScalarProperty Name="Accommodation_Code" ColumnName="Accommodation_Code" />
+                <ScalarProperty Name="Accommodation_Name" ColumnName="Accommodation_Name" />
+                <ScalarProperty Name="Mobile_Institution" ColumnName="Mobile_Institution" />
+                <ScalarProperty Name="Mobility_Name" ColumnName="Mobility_Name" />
+                <ScalarProperty Name="Formal_Status" ColumnName="Formal_Status" />
+                <ScalarProperty Name="Formality_Name" ColumnName="Formality_Name" />
+                <ScalarProperty Name="Institution_Residence" ColumnName="Institution_Residence" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+                <ScalarProperty Name="Sub_County_Code" ColumnName="Sub_County_Code" />
+                <ScalarProperty Name="Sub_County_Name" ColumnName="Sub_County_Name" />
+                <ScalarProperty Name="Constituency_Code" ColumnName="Constituency_Code" />
+                <ScalarProperty Name="Constituency_Name" ColumnName="Constituency_Name" />
+                <ScalarProperty Name="Zone_Code" ColumnName="Zone_Code" />
+                <ScalarProperty Name="Zone_Name" ColumnName="Zone_Name" />
+                <ScalarProperty Name="Ward_Name" ColumnName="Ward_Name" />
+                <ScalarProperty Name="Ward_Code" ColumnName="Ward_Code" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Postal_Address" ColumnName="Postal_Address" />
+                <ScalarProperty Name="Tel_Number" ColumnName="Tel_Number" />
+                <ScalarProperty Name="Tel_Number2" ColumnName="Tel_Number2" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Mobile_Number1" ColumnName="Mobile_Number1" />
+                <ScalarProperty Name="Mobile_Number2" ColumnName="Mobile_Number2" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Ownership_Document" ColumnName="Ownership_Document" />
+                <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
+                <ScalarProperty Name="Premise_Ownership" ColumnName="Premise_Ownership" />
+                <ScalarProperty Name="Social_Media" ColumnName="Social_Media" />
+                <ScalarProperty Name="Educationa_System_Name" ColumnName="Educationa_System_Name" />
+                <ScalarProperty Name="Education_System_Code" ColumnName="Education_System_Code" />
+                <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+                <ScalarProperty Name="Proprietor_Code" ColumnName="Proprietor_Code" />
+                <ScalarProperty Name="Proprietor_Name" ColumnName="Proprietor_Name" />
+                <ScalarProperty Name="Nearest_Police_Station" ColumnName="Nearest_Police_Station" />
+                <ScalarProperty Name="Registration_Certificate" ColumnName="Registration_Certificate" />
+                <ScalarProperty Name="Nearest_Health_Facility" ColumnName="Nearest_Health_Facility" />
+                <ScalarProperty Name="Nearest_Town" ColumnName="Nearest_Town" />
+                <ScalarProperty Name="Captured_By" ColumnName="Captured_By" />
+                <ScalarProperty Name="Date_Captured" ColumnName="Date_Captured" />
+                <ScalarProperty Name="Employer_pin" ColumnName="Employer_pin" />
+                <ScalarProperty Name="Ownershipdocuments" ColumnName="Ownershipdocuments" />
+                <ScalarProperty Name="Incorporationdocument" ColumnName="Incorporationdocument" />
+                <ScalarProperty Name="InstitutionRegDocument" ColumnName="InstitutionRegDocument" />
+                <ScalarProperty Name="Tsc_Code" ColumnName="Tsc_Code" />
+                <ScalarProperty Name="Knec_Code" ColumnName="Knec_Code" />
+                <ScalarProperty Name="Sponsor_Name" ColumnName="Sponsor_Name" />
+                <ScalarProperty Name="Institution_Sponsor" ColumnName="Institution_Sponsor" />
+                <ScalarProperty Name="County_Code" ColumnName="County_Code" />
+                <ScalarProperty Name="County_Name" ColumnName="County_Name" />
+                <ScalarProperty Name="BC_Total" ColumnName="BC_Total" />
+                <ScalarProperty Name="WBC_Total" ColumnName="WBC_Total" />
+                <ScalarProperty Name="Learners" ColumnName="Learners" />
+                <ScalarProperty Name="TSC_Total" ColumnName="TSC_Total" />
+                <ScalarProperty Name="BOM_Total" ColumnName="BOM_Total" />
+                <ScalarProperty Name="Staff" ColumnName="Staff" />
+                <ScalarProperty Name="EffectiveName" ColumnName="EffectiveName" />
+                <ScalarProperty Name="StudSel" ColumnName="StudSel" />
+                <ScalarProperty Name="BankAccs" ColumnName="BankAccs" />
+                <ScalarProperty Name="CompletedNessRegions" ColumnName="CompletedNessRegions" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

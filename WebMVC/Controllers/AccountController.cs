@@ -216,6 +216,9 @@ namespace WebMVC.Controllers
                     Session["mSchoolAccess"] = false;
                     Session["mSchool"] = "0";
                     Session["HomeController"] = "Admin";
+                    Session["mCountyDisp"] = "";
+                    Session["mSCountyDisp"] = "";
+                    Session["mLevelDisp"] = "";
                     if (returnUrl != null)
                     {
                         return this.RedirectToLocal(returnUrl);

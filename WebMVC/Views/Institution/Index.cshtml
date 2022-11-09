@@ -1,0 +1,206 @@
+﻿@model WebMVC.Models.InstitutionsViewModel
+@{
+    ViewBag.Title = "Institutions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var i = 1;
+}
+<script src="~/Scripts/bootbox.all.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/CascadeControls.js"></script>
+<script src="~/Scripts/Institutions.js"></script>
+
+<h2>INSTITUTIONS LISTING</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("County", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.DropDownList("countycode", Model.CountyList, "--Select--", new { @id = "ddlCty", @class = "form-control ddlCty" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("Sub-County", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.DropDownList("scountycode", Model.SubCountyList, "--Select--", new { @id = "ddlSCty", @class = "form-control ddlSCty" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("Level", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.DropDownList("levelcode", Model.LevelList, "--Select--", new { @id = "ddlLevel", @class = "form-control ddlLevel" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("Type", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.DropDownList("typecode", Model.TypeList, "--Select--", new { @id = "ddlType", @class = "form-control ddlType" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("Search", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBox("searchtext", new { @class = "form-control" })
+                    <input type="button" value="GO" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="col-md-9">
+                    @Html.DropDownList("pagerecords", Model.PageRecordsList, "--Select--", new { @id = "ddlRecs", @class = "form-control ddlRecs" })
+                    (Records per Page)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (ViewBag.Message != "")
+    {
+        <p>
+            <div class="text-success">@ViewBag.Message</div>
+        </p>}
+    @if (ViewBag.Message2 != "")
+    {
+        <p>
+            <div class="text-fail">@ViewBag.Message2</div>
+        </p>
+    }
+</div>
+<div class="row">
+
+    <table class="table" id="datatable">
+        <tr>
+            <th>
+                ##
+            </th>
+            <th>
+                UIC
+            </th>
+            <th>
+                Institution Name
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Accommodation Type
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Mobile
+            </th>
+            <th>
+                TSC
+            </th>
+            <th>
+                BOM/Private
+            </th>
+            <th>
+                Staff
+            </th>
+            <th>
+                Learners (BC)
+            </th>
+            <th>
+                Learners (WBC)
+            </th>
+            <th>
+                Learners
+            </th>
+            <th></th>
+        </tr>
+        @if (Model.Institutions != null)
+        {
+            foreach (var item in Model.Institutions)
+            {
+                var mid = item.Institution_Code.ToString();
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Institution_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Institution_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Accommodation_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Postal_Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mobile_Number1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TSC_Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOM_Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Staff)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BC_Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WBC_Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Learners)
+                    </td>
+                    <td>
+                        <a href="/@ViewData["ExtLocalPath"]Institition/Edit/@mid">View</a>  |
+                        @Html.ActionLink("Delete", "Delete", new { id = mid }) |
+                        @Html.ActionLink("Move", "Move", new { id = mid })
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </table>
+</div>
+<script type="text/javascript" language="javascript">
+        function deleteSession(id) {
+            bootbox.confirm("Are you sure you want to delete Institution UIC = " + id + "?", function (result) {
+                $.ajax({
+                    url: "@Url.Action("Delete", "Institution")",
+                    type: 'POST',
+                    data: JSON.stringify({ id: id }), //small letter id, same as in controller parameter
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (customer) {
+                        if (customer != null) {
+                            window.location.href = '/Institution/Index'
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        }
+</script>
+

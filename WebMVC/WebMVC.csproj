@@ -217,10 +217,13 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\CascadeController.cs" />
     <Compile Include="Controllers\Api\DashboardController.cs" />
+    <Compile Include="Controllers\Api\InstitutionController.cs" />
     <Compile Include="Controllers\Api\SchDashboardController.cs" />
     <Compile Include="Controllers\Api\SchoolController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Models\ACCESSLOG.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
@@ -1187,6 +1190,15 @@
     <Compile Include="Models\proc_Get_ClassGrades_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\proc_Get_Institutions_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_Institution_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Get_InstLevel_Result.cs">
+      <DependentUpon>NEMISEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\proc_Get_InstTypes3_Result.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
@@ -1504,6 +1516,7 @@
     </Compile>
     <Compile Include="Models\ViewModels\AccountBindingModels.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
+    <Compile Include="Models\ViewModels\InstitutionViewModel.cs" />
     <Compile Include="Models\ViewModels\MainMenuViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1598,6 +1611,7 @@
     <Content Include="Scripts\Chart.bundle.min.js" />
     <Content Include="Scripts\c_config.js" />
     <Content Include="Scripts\c_menu.js" />
+    <Content Include="Scripts\Institutions.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -1686,9 +1700,11 @@
     <Content Include="Views\Shared\images\v_arrow.gi" />
     <Content Include="Views\School\EditLearner.cshtml" />
     <Content Include="Views\School\MoveLearner.cshtml" />
+    <Content Include="Views\Institution\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Staff\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

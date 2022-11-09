@@ -913,5 +913,49 @@ namespace WebMVC.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_DeleteLearner", uPIParameter, captured_ByParameter, institution_CodeParameter);
         }
+    
+        public virtual ObjectResult<proc_Get_Institutions_Result> proc_Get_Institutions(string mSCounty, string mLevel, string mType)
+        {
+            var mSCountyParameter = mSCounty != null ?
+                new ObjectParameter("mSCounty", mSCounty) :
+                new ObjectParameter("mSCounty", typeof(string));
+    
+            var mLevelParameter = mLevel != null ?
+                new ObjectParameter("mLevel", mLevel) :
+                new ObjectParameter("mLevel", typeof(string));
+    
+            var mTypeParameter = mType != null ?
+                new ObjectParameter("mType", mType) :
+                new ObjectParameter("mType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_Institutions_Result>("proc_Get_Institutions", mSCountyParameter, mLevelParameter, mTypeParameter);
+        }
+    
+        public virtual ObjectResult<proc_Get_InstLevel_Result> proc_Get_InstLevel()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_InstLevel_Result>("proc_Get_InstLevel");
+        }
+    
+        public virtual int proc_DeleteInstitution(string institution_Code, string captured_By)
+        {
+            var institution_CodeParameter = institution_Code != null ?
+                new ObjectParameter("Institution_Code", institution_Code) :
+                new ObjectParameter("Institution_Code", typeof(string));
+    
+            var captured_ByParameter = captured_By != null ?
+                new ObjectParameter("Captured_By", captured_By) :
+                new ObjectParameter("Captured_By", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_DeleteInstitution", institution_CodeParameter, captured_ByParameter);
+        }
+    
+        public virtual ObjectResult<proc_Get_Institution_Result> proc_Get_Institution(string mInst)
+        {
+            var mInstParameter = mInst != null ?
+                new ObjectParameter("mInst", mInst) :
+                new ObjectParameter("mInst", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_Institution_Result>("proc_Get_Institution", mInstParameter);
+        }
     }
 }
