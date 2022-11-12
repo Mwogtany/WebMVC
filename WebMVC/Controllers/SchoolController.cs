@@ -131,7 +131,54 @@ namespace WebMVC.Controllers
             aGenderList.Add(new SelectListItem { Text = "F", Value = "F" });
 
             var mylearner = (from p in Db.proc_Get_Learner(id)
-                             select p).SingleOrDefault();
+                             select new LearnerViewModel()
+                             {
+                                 UPI = p.UPI,
+                                 Names = p.Names,
+                                 Surname = p.Surname,
+                                 FirstName = p.FirstName,
+                                 OtherNames = p.OtherNames,
+                                 Institution_Name = p.Institution_Name,
+                                 Phone_Number = p.Phone_Number,
+                                 Email_Address = p.Email_Address,
+                                 Postal_Address = p.Postal_Address,
+                                 Father_Name = p.Father_Name,
+                                 Father_IDNo = p.Father_IDNo,
+                                 Father_Contacts = p.Father_Contacts,
+                                 Mother_Name = p.Mother_Name,
+                                 Mother_IDNo = p.Mother_IDNo,
+                                 Mother_Contacts = p.Mother_Contacts,
+                                 Guardian_Contacts = p.Guardian_Contacts,
+                                 Guardian_IDNo = p.Guardian_Contacts,
+                                 Guardian_Name = p.Guardian_Name,
+                                 Special_Medical_Condition = p.Special_Medical_Condition,
+                                 Medical_Name = p.Medical_Name,
+                                 Any_Special_Medical_Condition = p.Any_Special_Medical_Condition,
+                                 Institution_Code = p.Institution_Code,
+                                 Sub_County_Code = p.Sub_County_Code,
+                                 Nationality = p.Nationality,
+                                 County_Code = p.County_Code,
+                                 County_Name = p.County_Name,
+                                 LGender = p.Gender,
+                                 Country_Name = p.Country_Name,
+                                 Disability_Name = p.Disability_Name,
+                                 Class_Name = p.Class_Name,
+                                 DOB = p.DOB,
+                                 DOB2 = p.DOB2,
+                                 IsDateDOB = p.IsDateDOB,
+                                 Birth_Cert_No = p.Birth_Cert_No,
+                                 ID_No = p.ID_No,
+                                 Disability_Code = p.Disability_Code,
+                                 Class_Code = p.Class_Code,
+                                 County_Learner = p.County_Learner,
+                                 Sub_County_Learner = p.Sub_County_Learner,
+                                 Special_Needs_List = p.Special_Needs_List,
+                                 Father_Email = p.Father_Email,
+                                 Mother_Email = p.Mother_Email,
+                                 Guardian_Email = p.Guardian_Email,
+                                 AGE = p.AGE,
+                                 NHIF_No = p.NHIF_No,
+                             }).SingleOrDefault();
 
             var ccty = (from p in Db.COUNTies
                           select p).ToList();
@@ -185,7 +232,7 @@ namespace WebMVC.Controllers
             return View(mylearner);
         }
         [HttpPost]
-        public ActionResult EditLearner(proc_Get_Learner_Result mymodel)
+        public ActionResult EditLearner(LearnerViewModel mymodel)
         {
             ViewBag.Message = "";
             using (NEMISEntities Db = new NEMISEntities())
@@ -250,29 +297,7 @@ namespace WebMVC.Controllers
                 {
                     ViewBag.Message2 = "Record NOT Successed Saved!!! = " + mResultSet.First().GenUPI.ToString();
                 }
-                //try
-                //{
-                //    // Your code...
-                //    // Could also be before try if you know the exception occurs in SaveChanges
-                //    //Db.SaveChanges();
-
-                //    //return RedirectToAction("Index");
-                //}
-                //catch (DbEntityValidationException e)
-                //{
-                //    foreach (var eve in e.EntityValidationErrors)
-                //    {
-                //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                //        foreach (var ve in eve.ValidationErrors)
-                //        {
-                //            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                //                ve.PropertyName, ve.ErrorMessage);
-                //        }
-                //    }
-                //    throw;
-                //}
-
+                
                 List<SelectListItem> aGenderList = new List<SelectListItem>();
                 List<SelectListItem> aCountryList = new List<SelectListItem>();
                 List<SelectListItem> aMedicalList = new List<SelectListItem>();
@@ -348,7 +373,54 @@ namespace WebMVC.Controllers
             List<SelectListItem> aGradeList = new List<SelectListItem>();
             
             var mylearner = (from p in Db.proc_Get_Learner(id)
-                             select p).SingleOrDefault();
+                             select new LearnerViewModel()
+                             {
+                                 UPI = p.UPI,
+                                 Names = p.Names,
+                                 Surname = p.Surname,
+                                 FirstName = p.FirstName,
+                                 OtherNames = p.OtherNames,
+                                 Institution_Name = p.Institution_Name,
+                                 Phone_Number = p.Phone_Number,
+                                 Email_Address = p.Email_Address,
+                                 Postal_Address = p.Postal_Address,
+                                 Father_Name = p.Father_Name,
+                                 Father_IDNo = p.Father_IDNo,
+                                 Father_Contacts = p.Father_Contacts,
+                                 Mother_Name = p.Mother_Name,
+                                 Mother_IDNo = p.Mother_IDNo,
+                                 Mother_Contacts = p.Mother_Contacts,
+                                 Guardian_Contacts = p.Guardian_Contacts,
+                                 Guardian_IDNo = p.Guardian_Contacts,
+                                 Guardian_Name = p.Guardian_Name,
+                                 Special_Medical_Condition = p.Special_Medical_Condition,
+                                 Medical_Name = p.Medical_Name,
+                                 Any_Special_Medical_Condition = p.Any_Special_Medical_Condition,
+                                 Institution_Code = p.Institution_Code,
+                                 Sub_County_Code = p.Sub_County_Code,
+                                 Nationality = p.Nationality,
+                                 County_Code = p.County_Code,
+                                 County_Name = p.County_Name,
+                                 LGender = p.Gender,
+                                 Country_Name = p.Country_Name,
+                                 Disability_Name = p.Disability_Name,
+                                 Class_Name = p.Class_Name,
+                                 DOB = p.DOB,
+                                 DOB2 = p.DOB2,
+                                 IsDateDOB = p.IsDateDOB,
+                                 Birth_Cert_No = p.Birth_Cert_No,
+                                 ID_No = p.ID_No,
+                                 Disability_Code = p.Disability_Code,
+                                 Class_Code = p.Class_Code,
+                                 County_Learner = p.County_Learner,
+                                 Sub_County_Learner = p.Sub_County_Learner,
+                                 Special_Needs_List = p.Special_Needs_List,
+                                 Father_Email = p.Father_Email,
+                                 Mother_Email = p.Mother_Email,
+                                 Guardian_Email = p.Guardian_Email,
+                                 AGE = p.AGE,
+                                 NHIF_No = p.NHIF_No,
+                             }).SingleOrDefault();
             
             var mlevel = Session["LEVELCODE"].ToString();
             var minst = Session["Institution_Code"].ToString();
@@ -362,18 +434,33 @@ namespace WebMVC.Controllers
             ViewBag.ClassList = aGradeList;
             mtransfer.ALearnerViewModel = mylearner;
             mtransfer.OriginalGrade = mylearner.Class_Code;
+            mtransfer.NewGrade = "";
+            mtransfer.NewGradeList = aGradeList;
             mtransfer.UPI = id;
             return View(mtransfer);
         }
+
         [HttpPost]
         public ActionResult MoveLearner(MoveLearnerViewModel mycase)
         {
             var mtransfer = new MoveLearnerViewModel();
-
-            List<SelectListItem> aGradeList = new List<SelectListItem>();
+            var mlevel = Session["LEVELCODE"].ToString();
+            var minst = Session["Institution_Code"].ToString();
+            //NEMISEntities Db2 = new NEMISEntities();
+            //List<SelectListItem> aGradeList = new List<SelectListItem>();
             string id = mycase.UPI;
-            if (!ModelState.IsValid)
-                return View();
+            //var mgrd = (from p in Db2.proc_Get_ClassGrades(mlevel)
+            //            select p).ToList();
+            //mgrd.ForEach(x =>
+            //{
+            //    aGradeList.Add(new SelectListItem { Text = x.Class_Name, Value = x.Class_Code.ToString() });
+            //});
+
+            //ViewBag.ClassList = aGradeList;
+
+            //if (!ModelState.IsValid)
+            //    return View(mycase);
+
             if (Session["user"] == null)
             {
                 this.RedirectToAction("LogOff", "Account");
@@ -417,18 +504,56 @@ namespace WebMVC.Controllers
                 }
 
                 var mylearner = (from p in Db.proc_Get_Learner(id)
-                                 select p).SingleOrDefault();
+                                 select new LearnerViewModel()
+                                 {
+                                     UPI = p.UPI,
+                                     Names = p.Names,
+                                     Surname = p.Surname,
+                                     FirstName = p.FirstName,
+                                     OtherNames = p.OtherNames,
+                                     Institution_Name = p.Institution_Name,
+                                     Phone_Number = p.Phone_Number,
+                                     Email_Address = p.Email_Address,
+                                     Postal_Address = p.Postal_Address,
+                                     Father_Name = p.Father_Name,
+                                     Father_IDNo = p.Father_IDNo,
+                                     Father_Contacts = p.Father_Contacts,
+                                     Mother_Name = p.Mother_Name,
+                                     Mother_IDNo = p.Mother_IDNo,
+                                     Mother_Contacts = p.Mother_Contacts,
+                                     Guardian_Contacts = p.Guardian_Contacts,
+                                     Guardian_IDNo = p.Guardian_Contacts,
+                                     Guardian_Name = p.Guardian_Name,
+                                     Special_Medical_Condition = p.Special_Medical_Condition,
+                                     Medical_Name = p.Medical_Name,
+                                     Any_Special_Medical_Condition = p.Any_Special_Medical_Condition,
+                                     Institution_Code = p.Institution_Code,
+                                     Sub_County_Code = p.Sub_County_Code,
+                                     Nationality = p.Nationality,
+                                     County_Code = p.County_Code,
+                                     County_Name = p.County_Name,
+                                     LGender = p.Gender,
+                                     Country_Name = p.Country_Name,
+                                     Disability_Name = p.Disability_Name,
+                                     Class_Name = p.Class_Name,
+                                     DOB = p.DOB,
+                                     DOB2 = p.DOB2,
+                                     IsDateDOB = p.IsDateDOB,
+                                     Birth_Cert_No = p.Birth_Cert_No,
+                                     ID_No = p.ID_No,
+                                     Disability_Code = p.Disability_Code,
+                                     Class_Code = p.Class_Code,
+                                     County_Learner = p.County_Learner,
+                                     Sub_County_Learner = p.Sub_County_Learner,
+                                     Special_Needs_List = p.Special_Needs_List,
+                                     Father_Email = p.Father_Email,
+                                     Mother_Email = p.Mother_Email,
+                                     Guardian_Email = p.Guardian_Email,
+                                     AGE = p.AGE,
+                                     NHIF_No = p.NHIF_No,
+                                 }).SingleOrDefault();
 
-                var mlevel = Session["LEVELCODE"].ToString();
-                var minst = Session["Institution_Code"].ToString();
-                var mgrd = (from p in Db.proc_Get_ClassGrades(mlevel)
-                            select p).ToList();
-                mgrd.ForEach(x =>
-                {
-                    aGradeList.Add(new SelectListItem { Text = x.Class_Name, Value = x.Class_Code.ToString() });
-                });
-
-                ViewBag.ClassList = aGradeList;
+                
                 mtransfer.ALearnerViewModel = mylearner;
                 mtransfer.OriginalGrade = mylearner.Class_Code;
                 mtransfer.UPI = id;
@@ -457,6 +582,16 @@ namespace WebMVC.Controllers
             }
 
             return new EmptyResult();
+        }
+
+        public ActionResult MyInstitution()
+        {
+            var mlevel = Session["LEVELCODE"].ToString();
+            var minst = Session["Institution_Code"].ToString();
+            Session["controller"] = "School";
+            Session["action"] = "Index";
+
+            return RedirectToAction("Edit", "Institution", new { area = "", id = minst });
         }
     }
 }

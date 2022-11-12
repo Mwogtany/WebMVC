@@ -58,3 +58,22 @@ ol li {
   padding: 5px;
   margin-left: 1px;
 }
+
+.progress {
+  background: red;
+  display: block;
+  height: 20px;
+  text-align: center;
+  transition: width .3s;
+  width: 0;
+}
+
+.progress.hide {
+  opacity: 0;
+  transition: opacity 1.3s;
+}
+
+.ajaxprogress {
+  height: 30px;
+  width: 30px;
+}

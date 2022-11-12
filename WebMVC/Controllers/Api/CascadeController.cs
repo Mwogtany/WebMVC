@@ -148,6 +148,33 @@ namespace WebMVC.Controllers.Api
                 }
             }
         }
+        [HttpGet]
+        [Route("Zones/{id}")]
+        public IHttpActionResult GetZones(string id)
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.ZONEs
+                              where p.Sub_County_Code == id
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Zones for Sub-County Code =" + id + " Defined in NEMIS!!");
+                }
+            }
+        }
 
         [HttpGet]
         [Route("Levels")]
@@ -229,8 +256,7 @@ namespace WebMVC.Controllers.Api
                 }
             }
         }
-
-
+        
         [HttpGet]
         [Route("InstGrades/{UIC}/{levelcode}")]
         public IHttpActionResult GetInstGrades(string UIC, string levelcode)
@@ -286,6 +312,249 @@ namespace WebMVC.Controllers.Api
             }
         }
 
+        [HttpGet]
+        [Route("RegStatus")]
+        public IHttpActionResult GetRegStatus()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_STATUS
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Registraiton Status Labels in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionCategory")]
+        public IHttpActionResult GetInstitutionCategory()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_CATEGORY
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Registration Categories in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionCluster")]
+        public IHttpActionResult GetInstitutionCluster()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var mentity = (from p in Db.INSTITUTION_CLUSTERS
+                               select p).ToArray();
+
+                if (mentity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, mentity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, mentity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Cluster Types in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionGender")]
+        public IHttpActionResult GetInstitutionGender()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_GENDER
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Gender Types in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionAccommodationType")]
+        public IHttpActionResult GetInstitutionAccommodationType()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_ACCOMMODATION
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Gender Types in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionMobilityType")]
+        public IHttpActionResult GetInstitutionMobilityType()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_MOBILITY
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Mobility Types in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionFormalityType")]
+        public IHttpActionResult GetInstitutionFormalityType()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_FORMALITY
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Formality Types in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionResidenceType")]
+        public IHttpActionResult GetInstitutionResidenceType()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_RESIDENCE
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Residence Types in NEMIS!!");
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("InstitutionEduSysType")]
+        public IHttpActionResult GetInstitutionEduSysType()
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.INSTITUTION_EDUCATION_SYSTEM
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Education Systems in NEMIS!!");
+                }
+            }
+        }
 
         [HttpGet]
         [Route("RecordsPerPage")]

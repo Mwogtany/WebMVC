@@ -1,0 +1,868 @@
+﻿@model WebMVC.Models.InstitutionViewModel
+@{
+    ViewBag.Title = "Institution Biodata";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string mcontroller = Session["controller"].ToString();
+    string maction = Session["action"].ToString();
+}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA5uJ8WtZCj9qCSm8Qnow01TJR3H8A6mHQ"></script>
+<script src="~/Scripts/SchoolGeoLoci.js"></script>
+<script src="~/Scripts/CascadeControls.js"></script>
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/wms.js"></script>
+<div class="row" style="margin-top:50px;">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="entypo-plus-circled"></i>
+                    <h2>INSTITUTION BIO-DATA</h2>
+                    <span class="pull-right">
+                    </span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12" align="left">
+                        @Html.ActionLink("Back", maction, mcontroller)
+                    </div>
+                    <div class="container-fluid">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home">Institution Bio Data  <span class="badge">Step 1</span></a></li>
+                            <li><a data-toggle="tab" href="#OwnershipDetails">Ownership Details  <span class="badge">Step 2</span></a></li>
+                            <li><a data-toggle="tab" href="#InstitutionContacts">Institution Contacts   <span class="badge">Step 3</span></a></li>
+                            <li><a data-toggle="tab" href="#InstitutionDocuments">Institution Documents   <span class="badge">Step 4</span></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade in active">
+                                <div class="row">
+                                    <h3>Basic Institution Details</h3>
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-horizontal">
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="mymessage text-success"></div>
+                                                @if (ViewBag.Message != "")
+                                                {
+                                                    <p>
+                                                        <div class="text-success">@ViewBag.Message</div>
+                                                    </p>}
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Institution_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Institution_Code, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.ValidationMessageFor(model => model.Institution_Code, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Name, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Institution_Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Name, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Type, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Institution_Type, new SelectList(Model.TypeList, "Value", "Text"), "--Select--", new { @id = "ddlType", @class = "form-control", @disabled = "disabled" })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Type, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Current_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Institution_Current_Code, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Current_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Status, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Institution_Status, new SelectList(Model.RegStatusList, "Value", "Text"), "--Select--", new { @id = "ddlStatus", @class = "form-control", @disabled = "disabled" })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Status, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Registration_Date, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.TextBoxFor(model => model.Registration_Date, new { @type = "date", @class = "datepicker" })
+                                                                    @Html.ValidationMessageFor(model => model.Registration_Date, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Tsc_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Tsc_Code, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Tsc_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Knec_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Knec_Code, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Knec_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Category_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Institution_Category_Code, new SelectList(Model.CategoryList, "Value", "Text"), "--Select--", new { @id = "ddlCategory", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Category_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Level_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Institution_Level_Code, new SelectList(Model.LevelList, "Value", "Text"), "--Select--", new { @id = "ddlLevel", @class = "form-control", @disabled = "disabled" })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Level_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Cluster, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Institution_Cluster, new SelectList(Model.ClusterList, "Value", "Text"), "--Select--", new { @id = "ddlCluster", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Cluster, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Classification_by_Gender, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Classification_by_Gender, new SelectList(Model.GenderList, "Value", "Text"), "--Select--", new { @id = "ddlSGender", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Classification_by_Gender, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Accommodation_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Accommodation_Code, new SelectList(Model.AccommodationList, "Value", "Text"), "--Select--", new { @id = "ddlAccomm", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Accommodation_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Mobile_Institution, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Mobile_Institution, new SelectList(Model.MobileList, "Value", "Text"), "--Select--", new { @id = "ddlMob", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Mobile_Institution, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Formal_Status, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Formal_Status, new SelectList(Model.FormalityList, "Value", "Text"), "--Select--", new { @id = "ddlFormality", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Formal_Status, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Institution_Residence, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Institution_Residence, new SelectList(Model.ResidenceList, "Value", "Text"), "--Select--", new { @id = "ddlResid", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Institution_Residence, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Education_System_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Education_System_Code, new SelectList(Model.EduSysList, "Value", "Text"), "--Select--", new { @id = "ddlEduSys", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Education_System_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Employer_pin, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Employer_pin, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Employer_pin, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.County_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.County_Code, new SelectList(Model.CountyList, "Value", "Text"), "--Select--", new { @id = "ddlCty", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.County_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Sub_County_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Sub_County_Code, new SelectList(Model.SCountyList, "Value", "Text"), "--Select--", new { @id = "ddlSCty", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Sub_County_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Zone_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Zone_Code, new SelectList(Model.ZoneList, "Value", "Text"), "--Select--", new { @id = "ddlZone", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Zone_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Constituency_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Constituency_Code, new SelectList(Model.ConstituencyList, "Value", "Text"), "--Select--", new { @id = "ddlConst", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Constituency_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Ward_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.DropDownListFor(model => model.Ward_Code, new SelectList(Model.WardList, "Value", "Text"), "--Select--", new { @id = "ddlWard", @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.Ward_Code, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                    @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                    @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.PlusCode, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.PlusCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                    @Html.ValidationMessageFor(model => model.PlusCode, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 text-center">
+                                                            <input type="submit" value="SAVE STEP ONE" class="btn btn-default" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <script type="text/javascript">
+                                                $(document).ready(function () {
+                                                    var options = {
+                                                        dateFormat: 'dd/mm/yy',
+                                                        todayHighlight: true,
+                                                        autoclose: true,
+                                                    };
+
+                                                    $('#Registration_Date').datepicker(options);
+
+                                                });
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <center>
+                                            <input id="findme" class="findme" type="button" value="Show Map" /><br />
+                                            <input id="btnRoad" type="button" value="RoadMap" />
+                                            <input id="btnSat" type="button" value="Satellite" />
+                                            <input id="btnHyb" type="button" value="Hybrid" />
+                                            <input id="btnTer" type="button" value="Terrain" />
+                                            <a id="addStandardMarker" href="#">Add Standard Marker</a>
+                                            <a id="addIconMarker" href="#">Add Icon Marker</a>
+                                            <div id="map_canvas" style="width: 500px; height: 400px">
+                                            </div>
+                                            <div id="MyMeg">
+                                                <span style="align-items:center">
+                                                    <span class="auto-style7"><strong>KINDLY NOTE:</strong></span>
+                                                    <strong>ZOOM MAP TO YOUR SCHOOL AND CLICK TO CHECK ITS COORDINATES</strong>
+                                                </span>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="OwnershipDetails" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("InstOwnership", "Institution", FormMethod.Post))
+                                        {
+                                            <div class="mymessage2 text-success"></div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Premise_Ownership, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.DropDownListFor(model => model.Premise_Ownership, new SelectList(Model.PremOwnList, "Value", "Text"), "--Select--", new { @id = "ddlPremOwn", @class = "form-control" })
+                                                                @Html.ValidationMessageFor(model => model.Premise_Ownership, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Ownership_Document, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.DropDownListFor(model => model.Ownership_Document, new SelectList(Model.OwnerDocList, "Value", "Text"), "--Select--", new { @id = "ddlOwnDoc", @class = "form-control" })
+                                                                @Html.ValidationMessageFor(model => model.Ownership_Document, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Proprietor_Code, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Proprietor_Code, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Proprietor_Code, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Registration_Certificate, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Registration_Certificate, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Registration_Certificate, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Nearest_Police_Station, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Nearest_Police_Station, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Nearest_Police_Station, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Nearest_Health_Facility, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Nearest_Health_Facility, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Nearest_Health_Facility, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Nearest_Town, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Nearest_Town, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Nearest_Town, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 text-center">
+                                                            <input type="button" value="SAVE STEP TWO" onclick="saveOwnership();" class="btn btn-default" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                                function saveOwnership() {
+
+                                                    // Checking Data is available in browser
+                                                    var instcode = document.getElementById('Institution_Code').value;
+                                                    var Premise_Ownership = $('#ddlPremOwn option:selected').val();
+                                                    //var Premise_Ownership = $('#Premise_Ownership').val();
+                                                    var Ownership_Document = $('#ddlOwnDoc option:selected').val();
+                                                    //var Ownership_Document = $('#Ownership_Document').val();
+                                                    var Proprietor_Code = document.getElementById('Proprietor_Code').value;
+                                                    var Registration_Certificate = document.getElementById('Registration_Certificate').value;
+                                                    var Nearest_Police_Station = document.getElementById('Nearest_Police_Station').value;
+                                                    var Nearest_Health_Facility = document.getElementById('Nearest_Health_Facility').value;
+                                                    var Nearest_Town = document.getElementById('Nearest_Town').value;
+                                                    var muser = privilage;
+                                                    var mydata =
+                                                    {
+                                                        Institution_Code: instcode,
+                                                        Premise_Ownership: Premise_Ownership,
+                                                        Ownership_Document: Ownership_Document,
+                                                        Proprietor_Code: Proprietor_Code,
+                                                        Registration_Certificate: Registration_Certificate,
+                                                        Nearest_Police_Station: Nearest_Police_Station,
+                                                        Nearest_Health_Facility: Nearest_Health_Facility,
+                                                        Nearest_Town: Nearest_Town
+                                                    };
+                                                    
+                                                    var mydatajson = JSON.stringify(mydata);
+
+                                                    $(".mymessage2").innerHTML = "";
+                                                    $.ajax({
+                                                        url: '/Institution/InstOwnership',
+                                                        type: "POST",
+                                                        dataType: 'json',
+                                                        data: mydatajson,
+                                                        contentType: "application/json; charset=utf-8",
+                                                        success: function (result) {
+                                                            $(".mymessage2").append("Institution's Contact Details Saved!!!");
+                                                        },
+                                                        error: function (err) {
+                                                            $(".mymessage2").append("Institution's Contact Details NOT Saved!!!");
+                                                        }
+                                                    });
+
+                                                }
+
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="InstitutionContacts" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("InstContacts", "Institution", FormMethod.Post))
+                                        {
+                                            <div class="mymessage3 text-success"></div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Postal_Address, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Postal_Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Postal_Address, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Email_Address, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Email_Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Email_Address, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Mobile_Number1, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Mobile_Number1, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Mobile_Number1, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Mobile_Number2, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Mobile_Number2, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Mobile_Number2, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Tel_Number, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Tel_Number, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Tel_Number, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Tel_Number2, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Tel_Number2, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Tel_Number2, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Social_Media, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            <div class="col-md-8">
+                                                                @Html.EditorFor(model => model.Social_Media, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Social_Media, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 text-center">
+                                                            <input id="btnSaveContacts" type="button" value="SAVE STEP THREE" onclick="saveContact();" class="btn btn-default" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                                function saveContact() {
+
+                                                    // Checking Data is available in browser
+                                                    var instcode = document.getElementById('Institution_Code').value;
+                                                    var Postal_Address = document.getElementById('Postal_Address').value;
+                                                    var Email_Address = document.getElementById('Email_Address').value;
+                                                    var Tel_Number = document.getElementById('Tel_Number').value;
+                                                    var Tel_Number2 = document.getElementById('Tel_Number2').value;
+                                                    var Mobile_Number1 = document.getElementById('Mobile_Number1').value;
+                                                    var Mobile_Number2 = document.getElementById('Mobile_Number2').value;
+                                                    var Website = document.getElementById('Website').value;
+                                                    var Social_Media = document.getElementById('Social_Media').value;
+                                                    var muser = privilage;
+                                                    var mydata =
+                                                    {
+                                                        Institution_Code: instcode,
+                                                        Postal_Address: Postal_Address,
+                                                        Email_Address: Email_Address,
+                                                        Tel_Number: Tel_Number,
+                                                        Tel_Number2: Tel_Number2,
+                                                        Mobile_Number1: Mobile_Number1,
+                                                        Mobile_Number2: Mobile_Number2,
+                                                        Website: Website,
+                                                        Social_Media: Social_Media
+                                                    };
+                                                    var mydata2 = {
+                                                        data: mydata
+                                                    }
+                                                    var mydatajson = JSON.stringify(mydata);
+
+                                                    $(".mymessage3").innerHTML = "";
+                                                    $.ajax({
+                                                        url: '/Institution/InstConstacts',
+                                                        type: "POST",
+                                                        dataType: 'json',
+                                                        data: mydatajson,
+                                                        contentType: "application/json; charset=utf-8",
+                                                        success: function (result) {
+                                                            $(".mymessage3").append("Institution's Contact Details Saved!!!");
+                                                        },
+                                                        error: function (err) {
+                                                            $(".mymessage3").append("Institution's Contact Details NOT Saved!!!");
+                                                        }
+                                                    });
+
+                                                }
+                                                
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="InstitutionDocuments" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm())
+                                        {
+                                            if (ViewBag.Message4 != "")
+                                            {
+                                                <p>
+                                                    <div class="text-success">@ViewBag.Message4</div>
+                                                </p>
+                                            }
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Ownership_Document, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                        <div class="col-md-8">
+                                                            <input type="file" id="Ownership_Document" /> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.InstitutionRegDocument, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                        <div class="col-md-8">
+                                                            <input type="file" id="InstitutionRegDocument" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Incorporationdocument, htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                        <div class="col-md-8">
+                                                            <input type="file" id="Incorporationdocument" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 text-center">
+                                                            <input id="btnUpload" type="button" value="SAVE STEP FOUR" class="btn btn-default" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                $(document).ready(function(){
+                                                    $('#btnUpload').click(function () {
+
+                                                        // Checking whether FormData is available in browser
+                                                        if (window.FormData !== undefined) {
+                                                            var mcat = "";
+                                                            var fileUpload = $("#Ownership_Document").get(0);
+                                                            var files = fileUpload.files;
+
+                                                            // Create FormData object
+                                                            var fileData = new FormData();
+
+                                                            // Looping over all files and add it to FormData object
+                                                            for (var i = 0; i < files.length; i++) {
+                                                                fileData.append(files[i].name, files[i]);
+                                                            }
+
+                                                            // Adding one more key to FormData object
+                                                            fileData.append('username', 'Manas');
+
+                                                            $.ajax({
+                                                                url: '/Home/UploadFiles/2',
+                                                                type: "POST",
+                                                                contentType: false, // Not to set any content header
+                                                                processData: false, // Not to process data
+                                                                data: fileData,
+                                                                success: function (result) {
+                                                                    alert(result);
+                                                                },
+                                                                error: function (err) {
+                                                                    alert(err.statusText);
+                                                                }
+                                                            });
+
+                                                            var fileUpload2 = $("#InstitutionRegDocument").get(0);
+                                                            var files2 = fileUpload2.files;
+
+                                                            // Create FormData object
+                                                            var fileData2 = new FormData();
+
+                                                            // Looping over all files and add it to FormData object
+                                                            for (var i = 0; i < files2.length; i++) {
+                                                                fileData2.append(files2[i].name, files2[i]);
+                                                            }
+
+                                                            // Adding one more key to FormData object
+                                                            fileData2.append('username', 'Manas');
+
+                                                            $.ajax({
+                                                                url: '/Home/UploadFiles/1',
+                                                                type: "POST",
+                                                                contentType: false, // Not to set any content header
+                                                                processData: false, // Not to process data
+                                                                data: fileData2,
+                                                                success: function (result) {
+                                                                    alert(result);
+                                                                },
+                                                                error: function (err) {
+                                                                    alert(err.statusText);
+                                                                }
+                                                            });
+
+                                                            var fileUpload3 = $("#Incorporationdocument").get(0);
+                                                            var files3 = fileUpload3.files;
+
+                                                            // Create FormData object
+                                                            var fileData3 = new FormData();
+
+                                                            // Looping over all files and add it to FormData object
+                                                            for (var i = 0; i < files3.length; i++) {
+                                                                fileData3.append(files3[i].name, files3[i]);
+                                                            }
+
+                                                            // Adding one more key to FormData object
+                                                            fileData2.append('username', 'Manas');
+
+                                                            $.ajax({
+                                                                url: '/Home/UploadFiles/3',
+                                                                type: "POST",
+                                                                contentType: false, // Not to set any content header
+                                                                processData: false, // Not to process data
+                                                                data: fileData3,
+                                                                success: function (result) {
+                                                                    alert(result);
+                                                                },
+                                                                error: function (err) {
+                                                                    alert(err.statusText);
+                                                                }
+                                                            });
+                                                        } else {
+                                                            alert("FormData is not supported.");
+                                                        }
+                                                    });
+
+                                                });
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

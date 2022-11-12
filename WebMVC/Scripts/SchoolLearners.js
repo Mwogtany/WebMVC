@@ -2,6 +2,7 @@
     var myObj, x, txt1 = "", txt3 = "", txt4 = "";
     var origin = window.location.origin;
     var mUIC = privilage;
+    $('#loadingmessage').show();
     var sgrade = sessionStorage.mGrade;
     if (sgrade !== "") {
         $('#ddlGrade').val(sgrade);
@@ -15,14 +16,41 @@
     if (mCat === '1')
     {
         GetLearners(origin + "/api/School/Learners/" + mUIC + "/" + mGrade);
+        $('#loadingmessage').hide();
     }
     else
     {
         GetLearners(origin + "/api/School/TmpLearners/" + mUIC + "/" + mGrade);
+        $('#loadingmessage').hide();
     }
     var str = "";
     function GetLearners(murl) {
         $.ajax({
+            //xhr: function () {
+            //    var xhr = new window.XMLHttpRequest();
+            //    xhr.upload.addEventListener("progress", function (evt) {
+            //        if (evt.lengthComputable) {
+            //            var percentComplete = evt.loaded / evt.total;
+            //            console.log(percentComplete);
+            //            $('.progress').css({
+            //                width: percentComplete * 100 + '%'
+            //            });
+            //            if (percentComplete === 1) {
+            //                $('.progress').addClass('hide');
+            //            }
+            //        }
+            //    }, false);
+            //    xhr.addEventListener("progress", function (evt) {
+            //        if (evt.lengthComputable) {
+            //            var percentComplete = evt.loaded / evt.total;
+            //            console.log(percentComplete);
+            //            $('.progress').css({
+            //                width: percentComplete * 100 + '%'
+            //            });
+            //        }
+            //    }, false);
+            //    return xhr;
+            //},
             url: murl,
             type: 'GET',
             dataType: 'json',
@@ -67,9 +95,11 @@
                         txt1 += '</tr>';
                     });
                     $('#datatable tr').first().after(txt1);
+                    $('#loadingmessage').hide();
                 }
             },
             error: function (request, message, error) {
+                $('#loadingmessage').hide();
                 handleException(request, message, error);
             }
         });
@@ -77,7 +107,7 @@
 
     $('.ddlGrade').change(function () {
         var mGrade = document.getElementById('ddlGrade').value;
-        
+        $('#loadingmessage').show();
         sessionStorage.mGrade = mGrade;
         var mgrd = sessionStorage.mGrade;
 
@@ -97,6 +127,7 @@
     $('.ddlCat').change(function () {
         var mGrade = document.getElementById('ddlGrade').value;
         var mCat = document.getElementById('ddlCat').value;
+        $('#loadingmessage').show();
         sessionStorage.mCatBCert = mCat;
         var mgrd = sessionStorage.mCatBCert;
         var url = "";

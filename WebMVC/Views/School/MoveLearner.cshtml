@@ -5,14 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Move Learner From One Grade to Another</h2>
 <div class="row" style="margin-top:50px;">
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">
                     <i class="entypo-plus-circled"></i>
-                    Learner Bio-Data
+                    Move Learner From One Grade to Another
                     <span class="pull-right">
                     </span>
                 </div>
@@ -26,8 +25,6 @@
                         
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
-                                <h3>Basic Details</h3>
-                                <div class="col-md-12" style="color:red">CAPTURE ONLY LEARNERS WITH BIRTH CERTIFICATES!!</div>
                                 <div class="col-md-12">
                                     @using (Html.BeginForm())
                                     {
@@ -53,7 +50,7 @@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.UPI, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.UPI, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.EditorFor(model => model.UPI, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                                 @Html.ValidationMessageFor(model => model.UPI, "", new { @class = "text-danger" })
                                                             </div>
                                                         </div>
@@ -62,7 +59,7 @@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.ALearnerViewModel.Surname, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.Surname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.Surname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,7 +71,7 @@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.ALearnerViewModel.FirstName, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.FirstName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.FirstName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -82,7 +79,7 @@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.ALearnerViewModel.OtherNames, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.OtherNames, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.OtherNames, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -92,17 +89,17 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            @Html.Label("Birth Cert. No.", htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            @Html.LabelFor(model => model.ALearnerViewModel.Birth_Cert_No, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.Birth_Cert_No, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.Birth_Cert_No, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            @Html.Label("Date of Birth", htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            @Html.LabelFor(model => model.ALearnerViewModel.DOB2, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.DOB2, new { @type = "date", @class = "form-control datepicker", @readonly = "readonly" })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.DOB, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -112,9 +109,9 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            @Html.Label("Gender", htmlAttributes: new { @class = "control-label text-left col-md-4" })
+                                                            @Html.LabelFor(model => model.ALearnerViewModel.LGender, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.LGender, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.LGender, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -122,7 +119,7 @@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.ALearnerViewModel.Nationality, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.Country_Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.Country_Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -134,7 +131,7 @@
                                                         <div class="form-group">
                                                             @Html.Label("Current Grade", htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.TextBoxFor(model => model.ALearnerViewModel.Class_Name, new { @class = "form-control", @readonly = "readonly" })
+                                                                @Html.EditorFor(model => model.ALearnerViewModel.Class_Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -142,7 +139,7 @@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.NewGrade, htmlAttributes: new { @class = "control-label text-left col-md-4" })
                                                             <div class="col-md-8">
-                                                                @Html.DropDownListFor(model => model.NewGrade, new SelectList(ViewBag.ClassList, "Value", "Text"), "--Select--", new { @id = "ddlClass", @class = "form-control" })
+                                                                @Html.DropDownListFor(model => model.NewGrade, new SelectList(Model.NewGradeList, "Value", "Text"), "--Select--", new { @id = "ddlClass", @class = "form-control" })
                                                                 @Html.ValidationMessageFor(model => model.NewGrade, "", new { @class = "text-danger" })
                                                             </div>
                                                         </div>
@@ -159,7 +156,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                var options = {
+                                                    dateFormat: 'dd/mm/yy',
+                                                    todayHighlight: true,
+                                                    autoclose: true,
+                                                };
+
+                                                $('#DOB2').datepicker(options);
+
+                                            });
+                                        </script>
+
                                     }
                                 </div>
                             </div>

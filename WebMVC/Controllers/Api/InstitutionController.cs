@@ -38,5 +38,32 @@ namespace WebMVC.Controllers.Api
             }
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public IHttpActionResult GeInstitution(string id)
+        {
+            using (NEMISEntities Db = new NEMISEntities())
+            {
+                var entity = (from p in Db.proc_Get_Institution(id)
+                              select p).ToArray();
+                if (entity != null)
+                {
+                    try
+                    {
+                        // Respond to JSON requests
+                        return Content(HttpStatusCode.OK, entity, Configuration.Formatters.JsonFormatter);
+                    }
+                    catch
+                    {
+                        return Content(HttpStatusCode.BadRequest, entity);
+                    }
+                }
+                else
+                {
+                    return Content(HttpStatusCode.BadRequest, "No Institution Data in NEMIS Platform for UIC = "+ id +" Chosen!!");
+                }
+            }
+        }
+
     }
 }

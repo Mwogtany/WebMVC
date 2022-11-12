@@ -9088,6 +9088,69 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
           <Parameter Name="mUserName" Type="varchar" Mode="In" />
           <Parameter Name="mIndex" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="proc_Upd_InstitutionDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Institution_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Category_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Level_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Cluster" Type="nvarchar" Mode="In" />
+          <Parameter Name="Classification_by_Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Accommodation_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile_Institution" Type="nvarchar" Mode="In" />
+          <Parameter Name="Formal_Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Residence" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sub_County_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Constituency_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Zone_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ward_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Education_System_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="Longitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="Captured_By" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Current_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tsc_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Knec_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institution_Sponsor" Type="nvarchar" Mode="In" />
+          <Parameter Name="Registration_Date" Type="nvarchar" Mode="In" />
+          <Parameter Name="Employer_pin" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Upd_InstitutionDetail2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Institution_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Premise_Ownership" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ownership_Document" Type="nvarchar" Mode="In" />
+          <Parameter Name="Proprietor_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Registration_Certificate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nearest_Police_Station" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nearest_Health_Facility" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nearest_Town" Type="nvarchar" Mode="In" />
+          <Parameter Name="Captured_By" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Upd_InstitutionDetail3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Institution_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Postal_Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tel_Number" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tel_Number2" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email_Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile_Number1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile_Number2" Type="nvarchar" Mode="In" />
+          <Parameter Name="Website" Type="nvarchar" Mode="In" />
+          <Parameter Name="Social_Media" Type="nvarchar" Mode="In" />
+          <Parameter Name="Captured_By" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Upd_InstitutionIncorporationDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mInst" Type="nvarchar" Mode="In" />
+          <Parameter Name="mDoc" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Upd_InstitutionOwnershipDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mInst" Type="nvarchar" Mode="In" />
+          <Parameter Name="mDoc" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_Upd_InstitutionRegDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mInst" Type="nvarchar" Mode="In" />
+          <Parameter Name="mDoc" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="NEMISModelStoreContainer">
           <EntitySet Name="ACCESSLOG" EntityType="Self.ACCESSLOG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ADMISSION_DIFFERED_REPORTING" EntityType="Self.ADMISSION_DIFFERED_REPORTING" Schema="dbo" store:Type="Tables" />
@@ -22785,7 +22848,70 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
             <Parameter Name="Captured_By" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Get_Institution" ReturnType="Collection(NEMISModel.proc_Get_Institution_Result)">
+          <Parameter Name="mInst" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Upd_InstitutionDetail">
+            <Parameter Name="Institution_Code" Mode="In" Type="String" />
+            <Parameter Name="Institution_Name" Mode="In" Type="String" />
+            <Parameter Name="Institution_Category_Code" Mode="In" Type="String" />
+            <Parameter Name="Institution_Level_Code" Mode="In" Type="String" />
+            <Parameter Name="Institution_Cluster" Mode="In" Type="String" />
+            <Parameter Name="Classification_by_Gender" Mode="In" Type="String" />
+            <Parameter Name="Accommodation_Code" Mode="In" Type="String" />
+            <Parameter Name="Mobile_Institution" Mode="In" Type="String" />
+            <Parameter Name="Formal_Status" Mode="In" Type="String" />
+            <Parameter Name="Institution_Residence" Mode="In" Type="String" />
+            <Parameter Name="Sub_County_Code" Mode="In" Type="String" />
+            <Parameter Name="Constituency_Code" Mode="In" Type="String" />
+            <Parameter Name="Zone_Code" Mode="In" Type="String" />
+            <Parameter Name="Ward_Code" Mode="In" Type="String" />
+            <Parameter Name="Education_System_Code" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="String" />
+            <Parameter Name="Longitude" Mode="In" Type="String" />
+            <Parameter Name="Captured_By" Mode="In" Type="String" />
+            <Parameter Name="Institution_Current_Code" Mode="In" Type="String" />
+            <Parameter Name="Institution_Type" Mode="In" Type="String" />
+            <Parameter Name="Institution_Status" Mode="In" Type="String" />
+            <Parameter Name="Tsc_Code" Mode="In" Type="String" />
+            <Parameter Name="Knec_Code" Mode="In" Type="String" />
+            <Parameter Name="Institution_Sponsor" Mode="In" Type="String" />
+            <Parameter Name="Registration_Date" Mode="In" Type="String" />
+            <Parameter Name="Employer_pin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Upd_InstitutionIncorporationDocument">
             <Parameter Name="mInst" Mode="In" Type="String" />
+            <Parameter Name="mDoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Upd_InstitutionOwnershipDocument">
+            <Parameter Name="mInst" Mode="In" Type="String" />
+            <Parameter Name="mDoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Upd_InstitutionRegDocument">
+            <Parameter Name="mInst" Mode="In" Type="String" />
+            <Parameter Name="mDoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Upd_InstitutionDetail2">
+            <Parameter Name="Institution_Code" Mode="In" Type="String" />
+            <Parameter Name="Premise_Ownership" Mode="In" Type="String" />
+            <Parameter Name="Ownership_Document" Mode="In" Type="String" />
+            <Parameter Name="Proprietor_Code" Mode="In" Type="String" />
+            <Parameter Name="Registration_Certificate" Mode="In" Type="String" />
+            <Parameter Name="Nearest_Police_Station" Mode="In" Type="String" />
+            <Parameter Name="Nearest_Health_Facility" Mode="In" Type="String" />
+            <Parameter Name="Nearest_Town" Mode="In" Type="String" />
+            <Parameter Name="Captured_By" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_Upd_InstitutionDetail3">
+            <Parameter Name="Institution_Code" Mode="In" Type="String" />
+            <Parameter Name="Postal_Address" Mode="In" Type="String" />
+            <Parameter Name="Tel_Number" Mode="In" Type="String" />
+            <Parameter Name="Tel_Number2" Mode="In" Type="String" />
+            <Parameter Name="Email_Address" Mode="In" Type="String" />
+            <Parameter Name="Mobile_Number1" Mode="In" Type="String" />
+            <Parameter Name="Mobile_Number2" Mode="In" Type="String" />
+            <Parameter Name="Website" Mode="In" Type="String" />
+            <Parameter Name="Social_Media" Mode="In" Type="String" />
+            <Parameter Name="Captured_By" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_Get_Categories_Result">
@@ -32550,6 +32676,12 @@ warning 6002: The table/view 'NEMIS.dbo.vwLearnerScholarship' does not have a pr
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_Upd_InstitutionDetail" FunctionName="NEMISModel.Store.proc_Upd_InstitutionDetail" />
+          <FunctionImportMapping FunctionImportName="proc_Upd_InstitutionIncorporationDocument" FunctionName="NEMISModel.Store.proc_Upd_InstitutionIncorporationDocument" />
+          <FunctionImportMapping FunctionImportName="proc_Upd_InstitutionOwnershipDocument" FunctionName="NEMISModel.Store.proc_Upd_InstitutionOwnershipDocument" />
+          <FunctionImportMapping FunctionImportName="proc_Upd_InstitutionRegDocument" FunctionName="NEMISModel.Store.proc_Upd_InstitutionRegDocument" />
+          <FunctionImportMapping FunctionImportName="proc_Upd_InstitutionDetail2" FunctionName="NEMISModel.Store.proc_Upd_InstitutionDetail2" />
+          <FunctionImportMapping FunctionImportName="proc_Upd_InstitutionDetail3" FunctionName="NEMISModel.Store.proc_Upd_InstitutionDetail3" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

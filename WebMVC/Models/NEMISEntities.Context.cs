@@ -957,5 +957,239 @@ namespace WebMVC.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Get_Institution_Result>("proc_Get_Institution", mInstParameter);
         }
+    
+        public virtual int proc_Upd_InstitutionDetail(string institution_Code, string institution_Name, string institution_Category_Code, string institution_Level_Code, string institution_Cluster, string classification_by_Gender, string accommodation_Code, string mobile_Institution, string formal_Status, string institution_Residence, string sub_County_Code, string constituency_Code, string zone_Code, string ward_Code, string education_System_Code, string latitude, string longitude, string captured_By, string institution_Current_Code, string institution_Type, string institution_Status, string tsc_Code, string knec_Code, string institution_Sponsor, string registration_Date, string employer_pin)
+        {
+            var institution_CodeParameter = institution_Code != null ?
+                new ObjectParameter("Institution_Code", institution_Code) :
+                new ObjectParameter("Institution_Code", typeof(string));
+    
+            var institution_NameParameter = institution_Name != null ?
+                new ObjectParameter("Institution_Name", institution_Name) :
+                new ObjectParameter("Institution_Name", typeof(string));
+    
+            var institution_Category_CodeParameter = institution_Category_Code != null ?
+                new ObjectParameter("Institution_Category_Code", institution_Category_Code) :
+                new ObjectParameter("Institution_Category_Code", typeof(string));
+    
+            var institution_Level_CodeParameter = institution_Level_Code != null ?
+                new ObjectParameter("Institution_Level_Code", institution_Level_Code) :
+                new ObjectParameter("Institution_Level_Code", typeof(string));
+    
+            var institution_ClusterParameter = institution_Cluster != null ?
+                new ObjectParameter("Institution_Cluster", institution_Cluster) :
+                new ObjectParameter("Institution_Cluster", typeof(string));
+    
+            var classification_by_GenderParameter = classification_by_Gender != null ?
+                new ObjectParameter("Classification_by_Gender", classification_by_Gender) :
+                new ObjectParameter("Classification_by_Gender", typeof(string));
+    
+            var accommodation_CodeParameter = accommodation_Code != null ?
+                new ObjectParameter("Accommodation_Code", accommodation_Code) :
+                new ObjectParameter("Accommodation_Code", typeof(string));
+    
+            var mobile_InstitutionParameter = mobile_Institution != null ?
+                new ObjectParameter("Mobile_Institution", mobile_Institution) :
+                new ObjectParameter("Mobile_Institution", typeof(string));
+    
+            var formal_StatusParameter = formal_Status != null ?
+                new ObjectParameter("Formal_Status", formal_Status) :
+                new ObjectParameter("Formal_Status", typeof(string));
+    
+            var institution_ResidenceParameter = institution_Residence != null ?
+                new ObjectParameter("Institution_Residence", institution_Residence) :
+                new ObjectParameter("Institution_Residence", typeof(string));
+    
+            var sub_County_CodeParameter = sub_County_Code != null ?
+                new ObjectParameter("Sub_County_Code", sub_County_Code) :
+                new ObjectParameter("Sub_County_Code", typeof(string));
+    
+            var constituency_CodeParameter = constituency_Code != null ?
+                new ObjectParameter("Constituency_Code", constituency_Code) :
+                new ObjectParameter("Constituency_Code", typeof(string));
+    
+            var zone_CodeParameter = zone_Code != null ?
+                new ObjectParameter("Zone_Code", zone_Code) :
+                new ObjectParameter("Zone_Code", typeof(string));
+    
+            var ward_CodeParameter = ward_Code != null ?
+                new ObjectParameter("Ward_Code", ward_Code) :
+                new ObjectParameter("Ward_Code", typeof(string));
+    
+            var education_System_CodeParameter = education_System_Code != null ?
+                new ObjectParameter("Education_System_Code", education_System_Code) :
+                new ObjectParameter("Education_System_Code", typeof(string));
+    
+            var latitudeParameter = latitude != null ?
+                new ObjectParameter("Latitude", latitude) :
+                new ObjectParameter("Latitude", typeof(string));
+    
+            var longitudeParameter = longitude != null ?
+                new ObjectParameter("Longitude", longitude) :
+                new ObjectParameter("Longitude", typeof(string));
+    
+            var captured_ByParameter = captured_By != null ?
+                new ObjectParameter("Captured_By", captured_By) :
+                new ObjectParameter("Captured_By", typeof(string));
+    
+            var institution_Current_CodeParameter = institution_Current_Code != null ?
+                new ObjectParameter("Institution_Current_Code", institution_Current_Code) :
+                new ObjectParameter("Institution_Current_Code", typeof(string));
+    
+            var institution_TypeParameter = institution_Type != null ?
+                new ObjectParameter("Institution_Type", institution_Type) :
+                new ObjectParameter("Institution_Type", typeof(string));
+    
+            var institution_StatusParameter = institution_Status != null ?
+                new ObjectParameter("Institution_Status", institution_Status) :
+                new ObjectParameter("Institution_Status", typeof(string));
+    
+            var tsc_CodeParameter = tsc_Code != null ?
+                new ObjectParameter("Tsc_Code", tsc_Code) :
+                new ObjectParameter("Tsc_Code", typeof(string));
+    
+            var knec_CodeParameter = knec_Code != null ?
+                new ObjectParameter("Knec_Code", knec_Code) :
+                new ObjectParameter("Knec_Code", typeof(string));
+    
+            var institution_SponsorParameter = institution_Sponsor != null ?
+                new ObjectParameter("Institution_Sponsor", institution_Sponsor) :
+                new ObjectParameter("Institution_Sponsor", typeof(string));
+    
+            var registration_DateParameter = registration_Date != null ?
+                new ObjectParameter("Registration_Date", registration_Date) :
+                new ObjectParameter("Registration_Date", typeof(string));
+    
+            var employer_pinParameter = employer_pin != null ?
+                new ObjectParameter("Employer_pin", employer_pin) :
+                new ObjectParameter("Employer_pin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Upd_InstitutionDetail", institution_CodeParameter, institution_NameParameter, institution_Category_CodeParameter, institution_Level_CodeParameter, institution_ClusterParameter, classification_by_GenderParameter, accommodation_CodeParameter, mobile_InstitutionParameter, formal_StatusParameter, institution_ResidenceParameter, sub_County_CodeParameter, constituency_CodeParameter, zone_CodeParameter, ward_CodeParameter, education_System_CodeParameter, latitudeParameter, longitudeParameter, captured_ByParameter, institution_Current_CodeParameter, institution_TypeParameter, institution_StatusParameter, tsc_CodeParameter, knec_CodeParameter, institution_SponsorParameter, registration_DateParameter, employer_pinParameter);
+        }
+    
+        public virtual int proc_Upd_InstitutionIncorporationDocument(string mInst, string mDoc)
+        {
+            var mInstParameter = mInst != null ?
+                new ObjectParameter("mInst", mInst) :
+                new ObjectParameter("mInst", typeof(string));
+    
+            var mDocParameter = mDoc != null ?
+                new ObjectParameter("mDoc", mDoc) :
+                new ObjectParameter("mDoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Upd_InstitutionIncorporationDocument", mInstParameter, mDocParameter);
+        }
+    
+        public virtual int proc_Upd_InstitutionOwnershipDocument(string mInst, string mDoc)
+        {
+            var mInstParameter = mInst != null ?
+                new ObjectParameter("mInst", mInst) :
+                new ObjectParameter("mInst", typeof(string));
+    
+            var mDocParameter = mDoc != null ?
+                new ObjectParameter("mDoc", mDoc) :
+                new ObjectParameter("mDoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Upd_InstitutionOwnershipDocument", mInstParameter, mDocParameter);
+        }
+    
+        public virtual int proc_Upd_InstitutionRegDocument(string mInst, string mDoc)
+        {
+            var mInstParameter = mInst != null ?
+                new ObjectParameter("mInst", mInst) :
+                new ObjectParameter("mInst", typeof(string));
+    
+            var mDocParameter = mDoc != null ?
+                new ObjectParameter("mDoc", mDoc) :
+                new ObjectParameter("mDoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Upd_InstitutionRegDocument", mInstParameter, mDocParameter);
+        }
+    
+        public virtual int proc_Upd_InstitutionDetail2(string institution_Code, string premise_Ownership, string ownership_Document, string proprietor_Code, string registration_Certificate, string nearest_Police_Station, string nearest_Health_Facility, string nearest_Town, string captured_By)
+        {
+            var institution_CodeParameter = institution_Code != null ?
+                new ObjectParameter("Institution_Code", institution_Code) :
+                new ObjectParameter("Institution_Code", typeof(string));
+    
+            var premise_OwnershipParameter = premise_Ownership != null ?
+                new ObjectParameter("Premise_Ownership", premise_Ownership) :
+                new ObjectParameter("Premise_Ownership", typeof(string));
+    
+            var ownership_DocumentParameter = ownership_Document != null ?
+                new ObjectParameter("Ownership_Document", ownership_Document) :
+                new ObjectParameter("Ownership_Document", typeof(string));
+    
+            var proprietor_CodeParameter = proprietor_Code != null ?
+                new ObjectParameter("Proprietor_Code", proprietor_Code) :
+                new ObjectParameter("Proprietor_Code", typeof(string));
+    
+            var registration_CertificateParameter = registration_Certificate != null ?
+                new ObjectParameter("Registration_Certificate", registration_Certificate) :
+                new ObjectParameter("Registration_Certificate", typeof(string));
+    
+            var nearest_Police_StationParameter = nearest_Police_Station != null ?
+                new ObjectParameter("Nearest_Police_Station", nearest_Police_Station) :
+                new ObjectParameter("Nearest_Police_Station", typeof(string));
+    
+            var nearest_Health_FacilityParameter = nearest_Health_Facility != null ?
+                new ObjectParameter("Nearest_Health_Facility", nearest_Health_Facility) :
+                new ObjectParameter("Nearest_Health_Facility", typeof(string));
+    
+            var nearest_TownParameter = nearest_Town != null ?
+                new ObjectParameter("Nearest_Town", nearest_Town) :
+                new ObjectParameter("Nearest_Town", typeof(string));
+    
+            var captured_ByParameter = captured_By != null ?
+                new ObjectParameter("Captured_By", captured_By) :
+                new ObjectParameter("Captured_By", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Upd_InstitutionDetail2", institution_CodeParameter, premise_OwnershipParameter, ownership_DocumentParameter, proprietor_CodeParameter, registration_CertificateParameter, nearest_Police_StationParameter, nearest_Health_FacilityParameter, nearest_TownParameter, captured_ByParameter);
+        }
+    
+        public virtual int proc_Upd_InstitutionDetail3(string institution_Code, string postal_Address, string tel_Number, string tel_Number2, string email_Address, string mobile_Number1, string mobile_Number2, string website, string social_Media, string captured_By)
+        {
+            var institution_CodeParameter = institution_Code != null ?
+                new ObjectParameter("Institution_Code", institution_Code) :
+                new ObjectParameter("Institution_Code", typeof(string));
+    
+            var postal_AddressParameter = postal_Address != null ?
+                new ObjectParameter("Postal_Address", postal_Address) :
+                new ObjectParameter("Postal_Address", typeof(string));
+    
+            var tel_NumberParameter = tel_Number != null ?
+                new ObjectParameter("Tel_Number", tel_Number) :
+                new ObjectParameter("Tel_Number", typeof(string));
+    
+            var tel_Number2Parameter = tel_Number2 != null ?
+                new ObjectParameter("Tel_Number2", tel_Number2) :
+                new ObjectParameter("Tel_Number2", typeof(string));
+    
+            var email_AddressParameter = email_Address != null ?
+                new ObjectParameter("Email_Address", email_Address) :
+                new ObjectParameter("Email_Address", typeof(string));
+    
+            var mobile_Number1Parameter = mobile_Number1 != null ?
+                new ObjectParameter("Mobile_Number1", mobile_Number1) :
+                new ObjectParameter("Mobile_Number1", typeof(string));
+    
+            var mobile_Number2Parameter = mobile_Number2 != null ?
+                new ObjectParameter("Mobile_Number2", mobile_Number2) :
+                new ObjectParameter("Mobile_Number2", typeof(string));
+    
+            var websiteParameter = website != null ?
+                new ObjectParameter("Website", website) :
+                new ObjectParameter("Website", typeof(string));
+    
+            var social_MediaParameter = social_Media != null ?
+                new ObjectParameter("Social_Media", social_Media) :
+                new ObjectParameter("Social_Media", typeof(string));
+    
+            var captured_ByParameter = captured_By != null ?
+                new ObjectParameter("Captured_By", captured_By) :
+                new ObjectParameter("Captured_By", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Upd_InstitutionDetail3", institution_CodeParameter, postal_AddressParameter, tel_NumberParameter, tel_Number2Parameter, email_AddressParameter, mobile_Number1Parameter, mobile_Number2Parameter, websiteParameter, social_MediaParameter, captured_ByParameter);
+        }
     }
 }

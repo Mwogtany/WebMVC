@@ -3,6 +3,8 @@
     var origin = window.location.origin;
     var mUIC = privilage;
     var secty = sessionStorage.mCounty;
+    $('#loadingmessage').show();
+
     if (secty !== "") {
         $('#ddlCty').val(secty);
         $.getJSON("../../api/Cascade/SubCounties/" + secty,
@@ -19,13 +21,42 @@
                         text: itemData.Sub_County_Name
                     }));
                 });
+                sessionStorage.mSCounty = "0";
             });
     }
+
+    $('.ddlSCty').change(function () {
+        $('#loadingmessage').show();
+        var mSCty = document.getElementById('ddlSCty').value;
+        sessionStorage.mSCounty = mSCty;
+        var mLevel = document.getElementById('ddlLevel').value;
+        var mType = document.getElementById('ddlType').value;
+        GetInstitutions(origin + "/api/Institution/" + mSCty + "/" + mLevel + "/" + mType);
+    });
+
+    $('.ddlLevel').change(function () {
+        $('#loadingmessage').show();
+        var mLevel = document.getElementById('ddlLevel').value;
+        sessionStorage.mLevelCode = mLevel;
+        var mSCty = document.getElementById('ddlSCty').value;
+        var mType = document.getElementById('ddlType').value;
+        GetInstitutions(origin + "/api/Institution/" + mSCty + "/" + mLevel + "/" + mType);
+    });
+
+    $('.ddlType').change(function () {
+        $('#loadingmessage').show();
+        var mType = document.getElementById('ddlType').value;
+        sessionStorage.mTypeCode = mType;
+        var mLevel = document.getElementById('ddlLevel').value;
+        var mSCty = document.getElementById('ddlSCty').value;
+        GetInstitutions(origin + "/api/Institution/" + mSCty + "/" + mLevel + "/" + mType);
+    });
 
     var sescty = sessionStorage.mSCounty;
     if (sescty !== "") {
         $('#ddlSCty').val(sescty);
     }
+
     var selev = sessionStorage.mLevelCode;
     if (selev !== "") {
         $('#ddlLevel').val(selev);
@@ -34,6 +65,7 @@
     if (setyp !== "") {
         $('#ddlType').val(setyp);
     }
+
     var mSCty = document.getElementById('ddlSCty').value;
     var mLevel = document.getElementById('ddlLevel').value;
     var mType = document.getElementById('ddlType').value;
@@ -89,9 +121,11 @@
                         txt1 += '</tr>';
                     });
                     $('#datatable tr').first().after(txt1);
+                    $('#loadingmessage').hide();
                 }
             },
             error: function (request, message, error) {
+                $('#loadingmessage').hide();
                 handleException(request, message, error);
             }
         });
@@ -100,30 +134,25 @@
     $('.ddlCty').change(function () {
         var mCty = document.getElementById('ddlCty').value;
         sessionStorage.mCounty = mCty;
+        var selectscty = $("#ddlSCty");
+        if (selectscty !== null) {
+            $.getJSON("../../api/Cascade/SubCounties/" + mCty,
+                function (classesData) {
+                    selectscty.empty();
+                    selectscty.append($('<option/>', {
+                        value: 0,
+                        text: "<<Select Sub-County>>"
+                    }));
+                    $.each(classesData, function (index, itemData) {
+                        selectscty.append($('<option/>', {
+                            value: itemData.Sub_County_Code,
+                            text: itemData.Sub_County_Name
+                        }));
+                    });
+                });
+
+            //sessionStorage.mSCounty = "";
+        }
     });
 
-    $('.ddlSCty').change(function () {
-        var mSCty = document.getElementById('ddlSCty').value;
-        sessionStorage.mSCounty = mSCty;
-
-        var mLevel = document.getElementById('ddlLevel').value;
-        var mType = document.getElementById('ddlType').value;
-        GetInstitutions(origin + "/api/Institution/" + mSCty + "/" + mLevel + "/" + mType);
-    });
-
-    $('.ddlLevel').change(function () {
-        var mLevel = document.getElementById('ddlLevel').value;
-        sessionStorage.mLevelCode = mLevel;
-        var mSCty = document.getElementById('ddlSCty').value;
-        var mType = document.getElementById('ddlType').value;
-        GetInstitutions(origin + "/api/Institution/" + mSCty + "/" + mLevel + "/" + mType);
-    });
-
-    $('.ddlType').change(function () {
-        var mType = document.getElementById('ddlType').value;
-        sessionStorage.mTypeCode = mType;
-        var mLevel = document.getElementById('ddlLevel').value;
-        var mSCty = document.getElementById('ddlSCty').value;
-        GetInstitutions(origin + "/api/Institution/" + mSCty + "/" + mLevel + "/" + mType);
-    });
 });

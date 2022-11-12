@@ -6,7 +6,6 @@
 }
 <script src="~/Scripts/bootbox.all.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/CascadeControls.js"></script>
 <script src="~/Scripts/Institutions.js"></script>
 
 <h2>INSTITUTIONS LISTING</h2>
@@ -79,6 +78,9 @@
             <div class="text-fail">@ViewBag.Message2</div>
         </p>
     }
+    <div id='loadingmessage' style='display:none'>
+        <img class="ajaxprogress" src="~/Content/ajax-loader.gif" />
+    </div>
 </div>
 <div class="row">
 

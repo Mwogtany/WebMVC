@@ -1544,7 +1544,7 @@
     <Compile Include="Models\ZONE.cs">
       <DependentUpon>NEMISEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -1553,6 +1553,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\GOKLogo.png" />
@@ -1634,7 +1635,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\SchData.js" />
+    <Content Include="Scripts\SchoolGeoLoci.js" />
     <Content Include="Scripts\SchoolLearners.js" />
+    <Content Include="Scripts\wms.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Shared\images\GOKLogo.png" />
     <Content Include="Views\Shared\images\h_arrow.gif" />
@@ -1701,9 +1704,14 @@
     <Content Include="Views\School\EditLearner.cshtml" />
     <Content Include="Views\School\MoveLearner.cshtml" />
     <Content Include="Views\Institution\Index.cshtml" />
+    <Content Include="Views\Institution\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Documents\Institutions\Capitation\" />
+    <Folder Include="Documents\Institutions\Incorporationdocument\" />
+    <Folder Include="Documents\Institutions\InstitutionRegDocument\" />
+    <Folder Include="Documents\Institutions\Ownershipdocuments\" />
     <Folder Include="Views\Staff\" />
   </ItemGroup>
   <ItemGroup>
