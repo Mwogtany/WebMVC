@@ -50,7 +50,7 @@ $(document).ready(function () {
             ylong = 36;
         }
 
-        var actionUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + xlat + ',' + ylong + '&key=AIzaSyA5uJ8WtZCj9qCSm8Qnow01TJR3H8A6mHQ';
+        var actionUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + xlat + ',' + ylong + '&key=xxxx';
         $.getJSON(actionUrl, function (response) {
             if (response != null) {
                 var x = 0;
