@@ -53,8 +53,8 @@ c_styles['MM']=[ // MainMenu (the shorter the class name the better)
 'buttonface',	// ItemsSeparatorColor ('color','transparent')
 0,		// ItemsSeparatorSpacing
 true,			// UseSubMenuImage (true,false)
-'[images/h_arrow.gif]',	// SubMenuImageSource ('[image_source]')
-'[images/h_arrow_over.gif]',	// OverSubMenuImageSource
+'[/images/h_arrow.gif]',	// SubMenuImageSource ('[image_source]')
+'[/images/h_arrow_over.gif]',	// OverSubMenuImageSource
 7,			// SubMenuImageWidth
 4,			// SubMenuImageHeight
 '10',			// SubMenuImageVAlign ('pixels from item top','middle')
@@ -63,13 +63,13 @@ true,			// UseSubMenuImage (true,false)
 '#000000',		// VISITED Background
 '#000000',		// VISITED Color
 'none',			// VISITED TextDecoration
-'[images/h_arrow.gif]',	// VISITED SubMenuImageSource
+'[/images/h_arrow.gif]',	// VISITED SubMenuImageSource
 'groove',		// CURRENT BorderStyle
 'buttonface',		// CURRENT BorderColor
 'buttonface',		// CURRENT Background
 '#000000',		// CURRENT Color
 'none',			// CURRENT TextDecoration
-'[images/h_arrow.gif]',	// CURRENT SubMenuImageSource
+'[/images/h_arrow.gif]',	// CURRENT SubMenuImageSource
 '',		// Custom additional CSS for the items (valid CSS)
 '',		// OVER Custom additional CSS for the items (valid CSS)
 '',		// CURRENT Custom additional CSS for the items (valid CSS)
@@ -110,8 +110,8 @@ c_styles['SM']=[ // SubMenus
 'buttonface',	// ItemsSeparatorColor ('color','transparent')
 2,		// ItemsSeparatorSpacing
 true,			// UseSubMenuImage (true,false)
-'[images/v_arrow.gif]',	// SubMenuImageSource ('[image_source]')
-'[images/v_arrow_over.gif]',	// OverSubMenuImageSource
+'[/images/v_arrow.gif]',	// SubMenuImageSource ('[image_source]')
+'[/images/v_arrow_over.gif]',	// OverSubMenuImageSource
 7,			// SubMenuImageWidth
 7,			// SubMenuImageHeight
 '7',			// SubMenuImageVAlign ('pixels from item top','middle')
@@ -120,13 +120,13 @@ true,			// UseSubMenuImage (true,false)
 'buttonface',		// VISITED Background
 '#000000',		// VISITED Color
 'none',			// VISITED TextDecoration
-'[images/v_arrow.gif]',	// VISITED SubMenuImageSource
+'[/images/v_arrow.gif]',	// VISITED SubMenuImageSource
 'solid',		// CURRENT BorderStyle
 'buttonface',		// CURRENT BorderColor
 'buttonface',		// CURRENT Background
 '#000000',		// CURRENT Color
 'none',			// CURRENT TextDecoration
-'[images/v_arrow.gif]',	// CURRENT SubMenuImageSource
+'[/images/v_arrow.gif]',	// CURRENT SubMenuImageSource
 '',		// Custom additional CSS for the items (valid CSS)
 '',		// OVER Custom additional CSS for the items (valid CSS)
 '',		// CURRENT Custom additional CSS for the items (valid CSS)

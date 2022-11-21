@@ -421,6 +421,7 @@ namespace WebMVC.Controllers
                 var authenticationManager = ctx.Authentication;
                 // Sign Out.    
                 authenticationManager.SignOut();
+                Session["HomeController"] = "Home";
             }
             catch (Exception ex)
             {

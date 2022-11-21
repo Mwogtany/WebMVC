@@ -31,8 +31,10 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div id="gklogo" class="col-md-2 gklogo">
-                </div>
+                <a href="/@myhome">
+                    <div id="gklogo" class="col-md-2 gklogo">
+                    </div>
+                </a>
                 <div class="col-md-8 text-center">
                     <h2>@AppState["customCountryName"]</h2>
                     <h3>@AppState["customOrgName"]</h3>
@@ -65,9 +67,6 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul id="Menu1" class="nav navbar-nav MM">
-                        <li>
-                            @Html.ActionLink("Home", "Index", myhome)
-                        </li>
                         @foreach (var item in menu)
                         {
                             //var subkey = item.ssmenkey;
@@ -97,9 +96,8 @@
                     </button>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul id="Menu1" class="nav navbar-nav MM">
-                        <li>
-                            @Html.ActionLink("Home", "Index", "Home")</li>
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>

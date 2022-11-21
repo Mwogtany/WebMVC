@@ -74,6 +74,34 @@ ol li {
 }
 
 .ajaxprogress {
-  height: 30px;
-  width: 30px;
+    height: 30px;
+    width: 30px;
+}
+
+/* The navbar */
+.navbar, navbar-nav  {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Navbar links */
+.navbar li a, navbar-nav li a {
+  color: #f2f2f2;
+}
+
+.navbar li a:hover, navbar-nav li a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.NotFormat {
+    background-color: #CCCCCC;
+    color: #000000;
+    padding: 1px;
+}
+
+ul.NotFormat {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
 }
